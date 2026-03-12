@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily English News — 每日英文新聞學習</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ===== Shared tokens ===== */
+:root {
+  --radius: 12px;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-serif: 'Merriweather', Georgia, serif;
+}
+
+/* ===== 方案二：紙質感亮色模式 (Light — default) ===== */
+:root, [data-theme="light"] {
+  --bg: #FDFBF6; --bg-card: #FFFFFF; --bg-hover: #F5F2E9;
+  --text-primary: #1A1A1A; --text-secondary: #4A4A4A; --text-muted: #8A8578;
+  --border: #E5E2D9;
+  --accent-tech: #4A8B71; --accent-finance: #B8863A; --accent-stem: #7A6AAD; --accent-world: #5A7FB5;
+  --accent-tech-bg: #EBF5F0; --accent-finance-bg: #F9F1E3; --accent-stem-bg: #F0ECF7; --accent-world-bg: #ECF1F8;
+  --vocab-bg: #F5F2E9; --vocab-border: #C4A46A;
+  --shadow-sm: 0 1px 3px rgba(26,26,26,0.05); --shadow-md: 0 4px 12px rgba(26,26,26,0.07); --shadow-lg: 0 8px 24px rgba(26,26,26,0.10);
+  --highlight-bg: #E8F5ED; --highlight-border: #4A8B71; --highlight-text: #1A1A1A;
+  --link-color: #4A8B71;
+  --toggle-bg: #E5E2D9; --toggle-knob: #FFFFFF;
+}
+
+/* ===== 方案一：深色暖調護眼模式 (Dark) ===== */
+[data-theme="dark"] {
+  --bg: #28241C; --bg-card: #302B22; --bg-hover: #3A342A;
+  --text-primary: #BFB8A2; --text-secondary: #968F7E; --text-muted: #6E675B;
+  --border: #3E3830;
+  --accent-tech: #96A878; --accent-finance: #C4A46A; --accent-stem: #A799C8; --accent-world: #7EA3C8;
+  --accent-tech-bg: #2E3328; --accent-finance-bg: #332E22; --accent-stem-bg: #2E2A36; --accent-world-bg: #272E38;
+  --vocab-bg: #3A342A; --vocab-border: #C4A46A;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.25); --shadow-md: 0 4px 12px rgba(0,0,0,0.30); --shadow-lg: 0 8px 24px rgba(0,0,0,0.35);
+  --highlight-bg: #3A3A28; --highlight-border: #96A878; --highlight-text: #BFB8A2;
+  --link-color: #C4A46A;
+  --toggle-bg: #3E3830; --toggle-knob: #BFB8A2;
+}
+
+/* Theme transition */
+body, .header, .article-card, .vocab-section, .vocab-card, .action-btn, .accent-btn, .cat-btn, .vocab-tip {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* ===== Theme toggle switch ===== */
+.theme-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.theme-toggle-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+.theme-toggle-track { position: relative; width: 44px; height: 24px; border-radius: 12px; background: var(--toggle-bg); border: 1px solid var(--border); transition: background 0.3s; flex-shrink: 0; }
+.theme-toggle-thumb { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--toggle-knob); box-shadow: 0 1px 3px rgba(0,0,0,0.15); transition: transform 0.3s, background 0.3s; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+[data-theme="dark"] .theme-toggle-thumb { transform: translateX(20px); }
+.theme-toggle-icons { display: flex; align-items: center; gap: 2px; font-size: 0.75rem; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text-primary); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); padding: 14px 0; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 88%, transparent); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px; }
+.header h1 span.icon { font-size: 1.5rem; }
+.header .date { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+
+/* Controls */
+.controls-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.control-group { display: flex; align-items: center; gap: 8px; }
+.control-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+.accent-selector { display: flex; gap: 4px; }
+.accent-btn { display: inline-flex; align-items: center; gap: 4px; padding: 5px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); font-size: 0.72rem; font-weight: 500; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; white-space: nowrap; }
+.accent-btn:hover { background: var(--bg-hover); }
+.accent-btn.active { background: var(--accent-tech); color: #fff; border-color: var(--accent-tech); }
+.accent-btn .flag { font-size: 0.85rem; }
+.voice-info { font-size: 0.68rem; color: var(--accent-tech); padding: 3px 8px; background: var(--accent-tech-bg); border-radius: 4px; white-space: nowrap; }
+
+/* Category nav */
+.cat-nav { display: flex; gap: 8px; padding: 14px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.cat-nav::-webkit-scrollbar { display: none; }
+.cat-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); font-size: 0.82rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: all 0.2s; font-family: var(--font-body); }
+.cat-btn:hover { background: var(--bg-hover); }
+.cat-btn.active { border-color: transparent; color: #fff; }
+.cat-btn[data-cat="all"].active { background: var(--text-secondary); }
+.cat-btn[data-cat="tech"].active { background: var(--accent-tech); }
+.cat-btn[data-cat="finance"].active { background: var(--accent-finance); }
+.cat-btn[data-cat="stem"].active { background: var(--accent-stem); }
+.cat-btn[data-cat="world"].active { background: var(--accent-world); }
+
+/* Articles */
+.articles { display: flex; flex-direction: column; gap: 24px; padding-bottom: 40px; }
+.article-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s; }
+.article-card:hover { box-shadow: var(--shadow-md); }
+.card-cat-strip { height: 4px; width: 100%; }
+.card-cat-strip.tech { background: var(--accent-tech); }
+.card-cat-strip.finance { background: var(--accent-finance); }
+.card-cat-strip.stem { background: var(--accent-stem); }
+.card-cat-strip.world { background: var(--accent-world); }
+.card-body { padding: 20px 24px; }
+.card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.card-tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 999px; }
+.card-tag.tech { background: var(--accent-tech-bg); color: var(--accent-tech); }
+.card-tag.finance { background: var(--accent-finance-bg); color: var(--accent-finance); }
+.card-tag.stem { background: var(--accent-stem-bg); color: var(--accent-stem); }
+.card-tag.world { background: var(--accent-world-bg); color: var(--accent-world); }
+.card-source-link { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.15s; }
+.card-source-link:hover { color: var(--link-color); }
+.card-source-link svg { width: 12px; height: 12px; opacity: 0.6; }
+.card-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; line-height: 1.4; margin-bottom: 10px; letter-spacing: -0.01em; }
+.card-title a { color: inherit; text-decoration: none; }
+.card-title a:hover { text-decoration: underline; }
+
+/* Clickable sentences — uses AI audio, not browser TTS */
+.card-summary { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.85; margin-bottom: 16px; }
+.sentence { cursor: pointer; padding: 2px 4px; border-radius: 4px; transition: background 0.25s ease, outline 0.25s ease; position: relative; }
+.sentence:hover { background: var(--highlight-bg); }
+.sentence.speaking { background: var(--highlight-bg); outline: 2px solid var(--highlight-border); outline-offset: 1px; color: var(--highlight-text); }
+
+/* Clickable title for speech */
+.card-title-speak { cursor: pointer; display: inline; border-radius: 4px; padding: 2px 4px; transition: background 0.25s ease, outline 0.25s ease; }
+.card-title-speak:hover { background: var(--highlight-bg); }
+.card-title-speak.speaking { background: var(--highlight-bg); outline: 2px solid var(--highlight-border); outline-offset: 1px; }
+
+.click-hint { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px; }
+.click-hint svg { width: 13px; height: 13px; opacity: 0.45; }
+
+.card-source-footer { display: flex; align-items: center; gap: 6px; padding: 10px 0 0; margin-bottom: 12px; font-size: 0.78rem; color: var(--text-muted); }
+.card-source-footer a { color: var(--link-color); text-decoration: none; font-weight: 500; }
+.card-source-footer a:hover { text-decoration: underline; }
+
+/* Vocab highlight — soft underline only */
+.vocab { background: transparent; border-bottom: 2px solid var(--vocab-border); padding: 0 1px; cursor: pointer; position: relative; border-radius: 0; transition: background 0.2s; }
+.vocab:hover { background: var(--vocab-bg); }
+.vocab-tip { display: none; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 200; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; min-width: 240px; max-width: 320px; box-shadow: var(--shadow-lg); text-align: left; font-family: var(--font-body); }
+.vocab-tip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: var(--border); }
+.vocab.active .vocab-tip { display: block; }
+.tip-word { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.tip-phonetic { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; }
+.tip-pos { font-size: 0.7rem; color: var(--accent-tech); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.tip-def { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px; line-height: 1.5; }
+.tip-zh { font-size: 0.85rem; color: var(--text-primary); font-weight: 500; margin-bottom: 8px; }
+.tip-example { font-size: 0.8rem; color: var(--text-muted); font-style: italic; line-height: 1.5; margin-bottom: 10px; }
+.tip-speak-btn { display: inline-flex; align-items: center; gap: 4px; background: var(--accent-tech); color: #fff; border: none; border-radius: 6px; padding: 5px 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; font-family: var(--font-body); transition: opacity 0.15s; }
+.tip-speak-btn:hover { opacity: 0.85; }
+.tip-speak-btn svg { width: 14px; height: 14px; }
+
+/* Audio player bar */
+.card-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding-top: 16px; border-top: 1px solid var(--border); }
+.action-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text-secondary); font-size: 0.78rem; font-weight: 500; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
+.action-btn:hover { background: var(--bg-hover); color: var(--text-primary); }
+.action-btn.playing { background: var(--accent-tech); color: #fff; border-color: var(--accent-tech); }
+.action-btn svg { width: 15px; height: 15px; }
+
+/* Vocab section */
+.vocab-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-sm); }
+.vocab-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.vocab-section .section-hint { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 16px; }
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.vocab-card { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+.vocab-card:hover { background: var(--bg-hover); }
+.vocab-card.speaking { background: var(--highlight-bg); border-color: var(--highlight-border); }
+.vocab-card-word { font-weight: 600; font-size: 0.88rem; }
+.vocab-card-zh { font-size: 0.78rem; color: var(--text-muted); }
+.vocab-card-speak { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-tech-bg); color: var(--accent-tech); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; flex-shrink: 0; }
+.vocab-card-speak:hover { background: var(--accent-tech); color: #fff; }
+.vocab-card-speak svg { width: 14px; height: 14px; }
+
+/* Vocab all-words player */
+.vocab-player { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding: 10px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+.vocab-player .action-btn { border: none; background: var(--accent-tech); color: #fff; padding: 6px 14px; }
+.vocab-player .action-btn:hover { opacity: 0.9; }
+.vocab-player .player-label { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* Footer */
+.footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 40px; }
+.footer p { font-size: 0.75rem; color: var(--text-muted); }
+.footer a { color: var(--text-muted); text-decoration: underline; }
+.footer a:hover { color: var(--text-secondary); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+  .card-body { padding: 16px; }
+  .card-title { font-size: 1.05rem; }
+  .card-summary { font-size: 0.88rem; }
+  .vocab-grid { grid-template-columns: 1fr; }
+  .vocab-tip { min-width: 200px; max-width: 260px; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .controls-bar { gap: 8px; }
+  .accent-btn { padding: 4px 8px; font-size: 0.68rem; }
+}
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.article-card { animation: fadeInUp 0.4s ease both; }
+.article-card:nth-child(2) { animation-delay: 0.05s; }
+.article-card:nth-child(3) { animation-delay: 0.1s; }
+.article-card:nth-child(4) { animation-delay: 0.15s; }
+.article-card.hidden { display: none; }
+
+/* Gentle pulse for the currently speaking sentence */
+@keyframes soft-pulse {
+  0%, 100% { outline-color: var(--highlight-border); }
+  50% { outline-color: color-mix(in srgb, var(--highlight-border) 40%, transparent); }
+}
+.sentence.speaking { animation: soft-pulse 2s ease-in-out infinite; }
+.card-title-speak.speaking { animation: soft-pulse 2s ease-in-out infinite; }
+
+/* ===== Collapsible sections ===== */
+.collapsible-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; padding: 4px 0; }
+.collapsible-header h2 { margin: 0; }
+.collapse-icon { width: 20px; height: 20px; color: var(--text-muted); transition: transform 0.3s ease; flex-shrink: 0; }
+.collapsible-header.collapsed .collapse-icon { transform: rotate(-90deg); }
+.collapsible-body { overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 2000px; opacity: 1; }
+.collapsible-body.collapsed { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+.section-count { font-size: 0.72rem; color: var(--text-muted); font-weight: 400; background: var(--bg-hover); padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+
+/* ===== Learning sections shared ===== */
+.learn-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
+.learn-section h2 { font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.learn-section .section-desc { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; margin-top: 4px; }
+.learn-card { padding: 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; }
+.learn-card:last-child { margin-bottom: 0; }
+.learn-card-cat { display: inline-block; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; margin-bottom: 8px; }
+.learn-card-cat.tech { background: var(--accent-tech-bg); color: var(--accent-tech); }
+.learn-card-cat.finance { background: var(--accent-finance-bg); color: var(--accent-finance); }
+.learn-card-cat.stem { background: var(--accent-stem-bg); color: var(--accent-stem); }
+.learn-card-cat.world { background: var(--accent-world-bg); color: var(--accent-world); }
+
+/* Grammar */
+.grammar-structure { font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; }
+.grammar-pattern { font-size: 0.82rem; color: var(--accent-tech); font-family: monospace; background: var(--accent-tech-bg); padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 8px; }
+.grammar-example { font-size: 0.88rem; color: var(--text-primary); font-style: italic; border-left: 3px solid var(--accent-tech); padding-left: 12px; margin: 8px 0; line-height: 1.6; }
+.grammar-explain { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 6px; }
+.grammar-zh { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 10px; }
+.grammar-practice { font-size: 0.85rem; color: var(--text-primary); background: var(--bg-hover); padding: 10px 14px; border-radius: 8px; border: 1px dashed var(--border); }
+.grammar-practice strong { color: var(--accent-tech); }
+
+/* Reading */
+.reading-q { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.reading-q:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.reading-q-type { font-size: 0.7rem; font-weight: 600; color: var(--accent-stem); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.reading-q-text { font-size: 0.88rem; color: var(--text-primary); margin-bottom: 8px; line-height: 1.6; }
+.reading-options { list-style: none; padding: 0; margin: 0 0 8px; }
+.reading-options li { font-size: 0.85rem; color: var(--text-secondary); padding: 4px 0; cursor: pointer; }
+.reading-options li:hover { color: var(--text-primary); }
+.reading-answer { display: none; padding: 8px 12px; background: var(--accent-tech-bg); border-radius: 8px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+.reading-answer.show { display: block; }
+.reading-answer strong { color: var(--accent-tech); }
+.reveal-btn { font-size: 0.75rem; color: var(--accent-tech); background: none; border: 1px solid var(--accent-tech); border-radius: 6px; padding: 4px 12px; cursor: pointer; font-family: var(--font-body); font-weight: 500; transition: all 0.15s; }
+.reveal-btn:hover { background: var(--accent-tech); color: #fff; }
+
+/* Writing */
+.writing-phrases { margin-bottom: 12px; }
+.writing-phrase { display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px; font-size: 0.85rem; }
+.writing-phrase-en { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+.writing-phrase-zh { color: var(--text-muted); font-size: 0.8rem; }
+.writing-context { font-size: 0.82rem; color: var(--text-secondary); font-style: italic; margin-left: 16px; margin-bottom: 4px; }
+.writing-model { border-left: 3px solid var(--accent-finance); padding: 10px 14px; margin: 10px 0; background: var(--accent-finance-bg); border-radius: 0 8px 8px 0; }
+.writing-model-en { font-size: 0.88rem; color: var(--text-primary); line-height: 1.6; margin-bottom: 6px; }
+.writing-model-zh { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+.writing-tip { font-size: 0.82rem; color: var(--accent-finance); margin-top: 8px; display: flex; gap: 6px; align-items: flex-start; }
+.writing-tip::before { content: '\1F4A1'; flex-shrink: 0; }
+.collocations { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.collocation-tag { font-size: 0.78rem; padding: 3px 10px; background: var(--bg-hover); border: 1px solid var(--border); border-radius: 999px; color: var(--text-secondary); }
+
+/* Listening */
+.listening-sentence { margin-bottom: 14px; padding: 12px 14px; background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border); }
+.listening-sentence:last-child { margin-bottom: 0; }
+.listening-gapped { font-size: 0.88rem; color: var(--text-primary); line-height: 1.7; margin-bottom: 8px; }
+.listening-gapped .gap { display: inline-block; min-width: 80px; border-bottom: 2px solid var(--accent-stem); color: transparent; background: transparent; font-family: inherit; font-size: inherit; text-align: center; padding: 0 4px; transition: all 0.2s; caret-color: var(--text-primary); }
+.listening-gapped .gap:focus { outline: none; border-bottom-color: var(--accent-tech); color: var(--text-primary); }
+.listening-gapped .gap.filled { color: var(--text-primary); }
+.listening-gapped .gap.correct { border-bottom-color: var(--accent-tech); color: var(--accent-tech); font-weight: 600; }
+.listening-gapped .gap.wrong { border-bottom-color: #c25; color: #c25; }
+.listening-controls { display: flex; gap: 8px; align-items: center; }
+.listen-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-secondary); cursor: pointer; font-family: var(--font-body); transition: all 0.15s; }
+.listen-btn:hover { background: var(--accent-tech); color: #fff; border-color: var(--accent-tech); }
+.listen-btn svg { width: 13px; height: 13px; }
+.check-btn { font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; border: none; background: var(--accent-stem); color: #fff; cursor: pointer; font-family: var(--font-body); font-weight: 500; transition: opacity 0.15s; }
+.check-btn:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <h1><span class="icon">📰</span> Daily English News</h1>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="date" id="dateDisplay"></span>
+      <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" role="button" aria-label="Toggle theme">
+        <span class="theme-toggle-label" id="themeLabel">☀️ 日間</span>
+        <div class="theme-toggle-track">
+          <div class="theme-toggle-thumb"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="controls-bar">
+    <div class="control-group">
+      <span class="control-label">口音 Accent</span>
+      <div class="accent-selector" id="accentSelector">
+        <button class="accent-btn active" data-accent="us">
+          <span class="flag">🇺🇸</span> American
+        </button>
+        <button class="accent-btn" data-accent="gb">
+          <span class="flag">🇬🇧</span> British
+        </button>
+      </div>
+      <span class="voice-info" id="voiceInfo">AI Voice — Charon</span>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <nav class="cat-nav" id="catNav">
+    <button class="cat-btn active" data-cat="all">All</button>
+    <button class="cat-btn" data-cat="tech">🖥 Technology</button>
+    <button class="cat-btn" data-cat="finance">💰 Finance</button>
+    <button class="cat-btn" data-cat="stem">🔬 STEM</button>
+    <button class="cat-btn" data-cat="world">🌍 International</button>
+  </nav>
+
+  <section class="vocab-section" id="vocabOverview">
+    <div class="collapsible-header collapsed" onclick="toggleCollapse('vocabBody', this)">
+      <h2>📝 Today's Key Vocabulary <span class="section-count" id="vocabCount">16 words</span></h2>
+      <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="collapsible-body collapsed" id="vocabBody">
+      <p class="section-hint" style="margin-top:10px;">點擊單詞卡片或文章中任意句子，均使用 AI 語音朗讀</p>
+      <div class="vocab-player">
+        <button class="action-btn" id="playAllWordsBtn" onclick="playAllWords()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          Play All Words
+        </button>
+        <span class="player-label">播放全部單詞 AI 發音</span>
+      </div>
+      <div class="vocab-grid" id="vocabGrid"><div class="vocab-card" data-cat="tech" onclick="playVocabWord('unveil')">
+        <div class="vc-word">unveil <span class="vc-pos">verb</span></div>
+        <div class="vc-phonetic">/ʌnˈveɪl/</div>
+        <div class="vc-def">to show or announce something publicly for the first time</div>
+        <div class="vc-zh">揭幕；公開</div>
+      </div>
+<div class="vocab-card" data-cat="tech" onclick="playVocabWord('emulate')">
+        <div class="vc-word">emulate <span class="vc-pos">verb</span></div>
+        <div class="vc-phonetic">/ˈemjuleɪt/</div>
+        <div class="vc-def">to match or surpass by imitation</div>
+        <div class="vc-zh">模仿；仿效</div>
+      </div>
+<div class="vocab-card" data-cat="tech" onclick="playVocabWord('vertically')">
+        <div class="vc-word">vertically <span class="vc-pos">adverb</span></div>
+        <div class="vc-phonetic">/ˈvɜːtɪkli/</div>
+        <div class="vc-def">in a way that involves different stages of a production process</div>
+        <div class="vc-zh">縱向地；垂直地</div>
+      </div>
+<div class="vocab-card" data-cat="tech" onclick="playVocabWord('infrastructure')">
+        <div class="vc-word">infrastructure <span class="vc-pos">noun</span></div>
+        <div class="vc-phonetic">/ˈɪnfrəstrʌktʃə/</div>
+        <div class="vc-def">the basic physical and organizational structures needed for operation</div>
+        <div class="vc-zh">基礎設施</div>
+      </div>
+<div class="vocab-card" data-cat="finance" onclick="playVocabWord('unprecedented')">
+        <div class="vc-word">unprecedented <span class="vc-pos">adjective</span></div>
+        <div class="vc-phonetic">/ʌnˈpresɪdentɪd/</div>
+        <div class="vc-def">never done or known before</div>
+        <div class="vc-zh">史無前例的</div>
+      </div>
+<div class="vocab-card" data-cat="finance" onclick="playVocabWord('intervention')">
+        <div class="vc-word">intervention <span class="vc-pos">noun</span></div>
+        <div class="vc-phonetic">/ˌɪntəˈvenʃn/</div>
+        <div class="vc-def">the action of becoming involved in a situation to improve or prevent it</div>
+        <div class="vc-zh">干預；介入</div>
+      </div>
+<div class="vocab-card" data-cat="finance" onclick="playVocabWord('maritime')">
+        <div class="vc-word">maritime <span class="vc-pos">adjective</span></div>
+        <div class="vc-phonetic">/ˈmærɪtaɪm/</div>
+        <div class="vc-def">connected with the sea, especially in relation to trade or shipping</div>
+        <div class="vc-zh">海事的；海運的</div>
+      </div>
+<div class="vocab-card" data-cat="finance" onclick="playVocabWord('geopolitical')">
+        <div class="vc-word">geopolitical <span class="vc-pos">adjective</span></div>
+        <div class="vc-phonetic">/ˌdʒiːəʊpəˈlɪtɪkl/</div>
+        <div class="vc-def">relating to politics, especially international relations, as influenced by geographical factors</div>
+        <div class="vc-zh">地緣政治的</div>
+      </div>
+<div class="vocab-card" data-cat="stem" onclick="playVocabWord('revive')">
+        <div class="vc-word">revive <span class="vc-pos">verb</span></div>
+        <div class="vc-phonetic">/rɪˈvaɪv/</div>
+        <div class="vc-def">to restore to life, consciousness, or activity</div>
+        <div class="vc-zh">使復活；恢復</div>
+      </div>
+<div class="vocab-card" data-cat="stem" onclick="playVocabWord('cryopreservation')">
+        <div class="vc-word">cryopreservation <span class="vc-pos">noun</span></div>
+        <div class="vc-phonetic">/ˌkraɪəʊˌprezəˈveɪʃn/</div>
+        <div class="vc-def">the process of preserving biological material by cooling to very low temperatures</div>
+        <div class="vc-zh">低溫保存</div>
+      </div>
+<div class="vocab-card" data-cat="stem" onclick="playVocabWord('synaptic')">
+        <div class="vc-word">synaptic <span class="vc-pos">adjective</span></div>
+        <div class="vc-phonetic">/sɪˈnæptɪk/</div>
+        <div class="vc-def">relating to the junction between two nerve cells</div>
+        <div class="vc-zh">突觸的</div>
+      </div>
+<div class="vocab-card" data-cat="stem" onclick="playVocabWord('implications')">
+        <div class="vc-word">implications <span class="vc-pos">noun</span></div>
+        <div class="vc-phonetic">/ˌɪmplɪˈkeɪʃnz/</div>
+        <div class="vc-def">the possible effects or results of an action or decision</div>
+        <div class="vc-zh">影響；意涵</div>
+      </div>
+<div class="vocab-card" data-cat="world" onclick="playVocabWord('escalate')">
+        <div class="vc-word">escalate <span class="vc-pos">verb</span></div>
+        <div class="vc-phonetic">/ˈeskəleɪt/</div>
+        <div class="vc-def">to increase rapidly; to become or make more intense</div>
+        <div class="vc-zh">升級；加劇</div>
+      </div>
+<div class="vocab-card" data-cat="world" onclick="playVocabWord('projectile')">
+        <div class="vc-word">projectile <span class="vc-pos">noun</span></div>
+        <div class="vc-phonetic">/prəˈdʒektaɪl/</div>
+        <div class="vc-def">a missile or object designed to be fired or thrown</div>
+        <div class="vc-zh">投射物；砲彈</div>
+      </div>
+<div class="vocab-card" data-cat="world" onclick="playVocabWord('restraint')">
+        <div class="vc-word">restraint <span class="vc-pos">noun</span></div>
+        <div class="vc-phonetic">/rɪˈstreɪnt/</div>
+        <div class="vc-def">a measure used to control or limit something</div>
+        <div class="vc-zh">克制；約束</div>
+      </div>
+<div class="vocab-card" data-cat="world" onclick="playVocabWord('intercepted')">
+        <div class="vc-word">intercepted <span class="vc-pos">verb</span></div>
+        <div class="vc-phonetic">/ˌɪntəˈseptɪd/</div>
+        <div class="vc-def">to stop and catch something before it reaches its destination</div>
+        <div class="vc-zh">攔截</div>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="articles" id="articlesContainer"><article class="article-card" data-cat="tech">
+      <div class="card-cat-strip tech"></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag tech">Technology</span>
+          <a class="card-source-link" href="https://www.reuters.com/technology/" target="_blank" rel="noopener noreferrer">Reuters <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <h2 class="card-title"><span class="card-title-speak" onclick="playTitle('tech', this)">Musk Unveils Joint Tesla-xAI Project &#x27;Macrohard&#x27; to Disrupt Software Industry</span></h2>
+        <div class="click-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11V5a3 3 0 0 0-6 0v6"/><path d="M18 11a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H9l-4-4 1.5-1.5A2 2 0 0 1 8 11h0"/></svg> <span>點擊標題或任意句子，AI 語音朗讀 · Tap any sentence to hear AI voice</span></div>
+        <div class="card-summary"><span class="sentence" onclick="playSentence('tech', 0, this)" data-sentence="0">Elon Musk on Wednesday unveiled a joint project between Tesla and his artificial intelligence startup xAI, which he called 'Macrohard' or 'Digital Optimus.'</span> <span class="sentence" onclick="playSentence('tech', 1, this)" data-sentence="1">The system is described as capable of emulating the functions of software companies, signaling Musk's ambition to expand beyond hardware and AI models into enterprise software.</span> <span class="sentence" onclick="playSentence('tech', 2, this)" data-sentence="2">The announcement comes as Meta simultaneously rolls out its own in-house AI chips, the latest generation of its MTIA series, to support its massive data center expansion.</span> <span class="sentence" onclick="playSentence('tech', 3, this)" data-sentence="3">The tech landscape is rapidly shifting as major players race to <span class="vocab" data-word="vertically" onclick="event.stopPropagation();toggleTip(this)">vertically<span class="vocab-tip"><div class="tip-word">vertically</div><div class="tip-phonetic">/ˈvɜːtɪkli/</div><div class="tip-pos">adverb</div><div class="tip-def">in a way that involves different stages of a production process</div><div class="tip-zh">🇨🇳 縱向地；垂直地</div><div class="tip-example">&quot;Major players race to vertically integrate AI across their operations.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('vertically')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> integrate AI across hardware, software, and cloud <span class="vocab" data-word="infrastructure" onclick="event.stopPropagation();toggleTip(this)">infrastructure<span class="vocab-tip"><div class="tip-word">infrastructure</div><div class="tip-phonetic">/ˈɪnfrəstrʌktʃə/</div><div class="tip-pos">noun</div><div class="tip-def">the basic physical and organizational structures needed for operation</div><div class="tip-zh">🇨🇳 基礎設施</div><div class="tip-example">&quot;Cloud infrastructure is becoming a key battleground in the AI race.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('infrastructure')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span>.</span></div>
+        <div class="card-source-footer">📌 Source: <a href="https://www.reuters.com/technology/" target="_blank" rel="noopener noreferrer">Reuters — Read original article</a></div>
+        <div class="card-actions"><button class="action-btn" onclick="playArticle('tech', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Read Aloud (Full Article)</button></div>
+      </div>
+    </article>
+<article class="article-card" data-cat="finance">
+      <div class="card-cat-strip finance"></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag finance">Finance</span>
+          <a class="card-source-link" href="https://www.wsj.com/livecoverage/cpi-inflation-data-stock-market-03-11-2026" target="_blank" rel="noopener noreferrer">The Wall Street Journal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <h2 class="card-title"><span class="card-title-speak" onclick="playTitle('finance', this)">Oil Prices Surge as IEA Releases Record 400 Million Barrels from Strategic Reserves</span></h2>
+        <div class="click-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11V5a3 3 0 0 0-6 0v6"/><path d="M18 11a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H9l-4-4 1.5-1.5A2 2 0 0 1 8 11h0"/></svg> <span>點擊標題或任意句子，AI 語音朗讀 · Tap any sentence to hear AI voice</span></div>
+        <div class="card-summary"><span class="sentence" onclick="playSentence('finance', 0, this)" data-sentence="0">The International Energy Agency announced an <span class="vocab" data-word="unprecedented" onclick="event.stopPropagation();toggleTip(this)">unprecedented<span class="vocab-tip"><div class="tip-word">unprecedented</div><div class="tip-phonetic">/ʌnˈpresɪdentɪd/</div><div class="tip-pos">adjective</div><div class="tip-def">never done or known before</div><div class="tip-zh">🇨🇳 史無前例的</div><div class="tip-example">&quot;The IEA announced an unprecedented release of oil from strategic reserves.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('unprecedented')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> release of 400 million barrels of oil from strategic reserves, the largest emergency <span class="vocab" data-word="intervention" onclick="event.stopPropagation();toggleTip(this)">intervention<span class="vocab-tip"><div class="tip-word">intervention</div><div class="tip-phonetic">/ˌɪntəˈvenʃn/</div><div class="tip-pos">noun</div><div class="tip-def">the action of becoming involved in a situation to improve or prevent it</div><div class="tip-zh">🇨🇳 干預；介入</div><div class="tip-example">&quot;This is the largest emergency intervention in the agency&#x27;s history.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('intervention')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> in the agency's history.</span> <span class="sentence" onclick="playSentence('finance', 1, this)" data-sentence="1">Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel and West Texas Intermediate trading above $88.</span> <span class="sentence" onclick="playSentence('finance', 2, this)" data-sentence="2">Three commercial vessels were attacked near the Strait of Hormuz on Wednesday morning, further disrupting <span class="vocab" data-word="maritime" onclick="event.stopPropagation();toggleTip(this)">maritime<span class="vocab-tip"><div class="tip-word">maritime</div><div class="tip-phonetic">/ˈmærɪtaɪm/</div><div class="tip-pos">adjective</div><div class="tip-def">connected with the sea, especially in relation to trade or shipping</div><div class="tip-zh">🇨🇳 海事的；海運的</div><div class="tip-example">&quot;Attacks near the Strait of Hormuz disrupted maritime operations.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('maritime')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> operations.</span> <span class="sentence" onclick="playSentence('finance', 3, this)" data-sentence="3">The combination of rising energy costs, <span class="vocab" data-word="geopolitical" onclick="event.stopPropagation();toggleTip(this)">geopolitical<span class="vocab-tip"><div class="tip-word">geopolitical</div><div class="tip-phonetic">/ˌdʒiːəʊpəˈlɪtɪkl/</div><div class="tip-pos">adjective</div><div class="tip-def">relating to politics, especially international relations, as influenced by geographical factors</div><div class="tip-zh">🇨🇳 地緣政治的</div><div class="tip-example">&quot;Geopolitical uncertainty continues to weigh on global markets.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('geopolitical')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.</span></div>
+        <div class="card-source-footer">📌 Source: <a href="https://www.wsj.com/livecoverage/cpi-inflation-data-stock-market-03-11-2026" target="_blank" rel="noopener noreferrer">The Wall Street Journal — Read original article</a></div>
+        <div class="card-actions"><button class="action-btn" onclick="playArticle('finance', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Read Aloud (Full Article)</button></div>
+      </div>
+    </article>
+<article class="article-card" data-cat="stem">
+      <div class="card-cat-strip stem"></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag stem">STEM</span>
+          <a class="card-source-link" href="https://www.nature.com/news" target="_blank" rel="noopener noreferrer">Nature <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <h2 class="card-title"><span class="card-title-speak" onclick="playTitle('stem', this)">Scientists Revive Activity in Frozen Mouse Brains for the First Time</span></h2>
+        <div class="click-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11V5a3 3 0 0 0-6 0v6"/><path d="M18 11a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H9l-4-4 1.5-1.5A2 2 0 0 1 8 11h0"/></svg> <span>點擊標題或任意句子，AI 語音朗讀 · Tap any sentence to hear AI voice</span></div>
+        <div class="card-summary"><span class="sentence" onclick="playSentence('stem', 0, this)" data-sentence="0">Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.</span> <span class="sentence" onclick="playSentence('stem', 1, this)" data-sentence="1">The technique involved careful <span class="vocab" data-word="cryopreservation" onclick="event.stopPropagation();toggleTip(this)">cryopreservation<span class="vocab-tip"><div class="tip-word">cryopreservation</div><div class="tip-phonetic">/ˌkraɪəʊˌprezəˈveɪʃn/</div><div class="tip-pos">noun</div><div class="tip-def">the process of preserving biological material by cooling to very low temperatures</div><div class="tip-zh">🇨🇳 低溫保存</div><div class="tip-example">&quot;The technique involved careful cryopreservation protocols.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('cryopreservation')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> protocols combined with targeted chemical treatments to restore <span class="vocab" data-word="synaptic" onclick="event.stopPropagation();toggleTip(this)">synaptic<span class="vocab-tip"><div class="tip-word">synaptic</div><div class="tip-phonetic">/sɪˈnæptɪk/</div><div class="tip-pos">adjective</div><div class="tip-def">relating to the junction between two nerve cells</div><div class="tip-zh">🇨🇳 突觸的</div><div class="tip-example">&quot;Chemical treatments helped restore synaptic signaling after thawing.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('synaptic')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> signaling after thawing.</span> <span class="sentence" onclick="playSentence('stem', 2, this)" data-sentence="2">While full 'cryosleep' remains in the realm of science fiction, the research represents a significant step toward understanding how biological tissue can survive extreme cold.</span> <span class="sentence" onclick="playSentence('stem', 3, this)" data-sentence="3">The findings could have far-reaching <span class="vocab" data-word="implications" onclick="event.stopPropagation();toggleTip(this)">implications<span class="vocab-tip"><div class="tip-word">implications</div><div class="tip-phonetic">/ˌɪmplɪˈkeɪʃnz/</div><div class="tip-pos">noun</div><div class="tip-def">the possible effects or results of an action or decision</div><div class="tip-zh">🇨🇳 影響；意涵</div><div class="tip-example">&quot;The findings could have far-reaching implications for organ preservation.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('implications')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> for organ preservation, long-duration space travel, and neuroscience research.</span></div>
+        <div class="card-source-footer">📌 Source: <a href="https://www.nature.com/news" target="_blank" rel="noopener noreferrer">Nature — Read original article</a></div>
+        <div class="card-actions"><button class="action-btn" onclick="playArticle('stem', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Read Aloud (Full Article)</button></div>
+      </div>
+    </article>
+<article class="article-card" data-cat="world">
+      <div class="card-cat-strip world"></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag world">International</span>
+          <a class="card-source-link" href="https://www.bloomberg.com/news/articles/2026-03-11/stock-market-today-dow-s-p-live-updates-" target="_blank" rel="noopener noreferrer">Bloomberg <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+        <h2 class="card-title"><span class="card-title-speak" onclick="playTitle('world', this)">Strait of Hormuz Under Fire: Three Vessels Attacked as US-Iran Conflict Escalates</span></h2>
+        <div class="click-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11V5a3 3 0 0 0-6 0v6"/><path d="M18 11a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H9l-4-4 1.5-1.5A2 2 0 0 1 8 11h0"/></svg> <span>點擊標題或任意句子，AI 語音朗讀 · Tap any sentence to hear AI voice</span></div>
+        <div class="card-summary"><span class="sentence" onclick="playSentence('world', 0, this)" data-sentence="0">Three commercial vessels were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict intensified, with projectiles hitting a container ship and drones <span class="vocab" data-word="intercepted" onclick="event.stopPropagation();toggleTip(this)">intercepted<span class="vocab-tip"><div class="tip-word">intercepted</div><div class="tip-phonetic">/ˌɪntəˈseptɪd/</div><div class="tip-pos">verb</div><div class="tip-def">to stop and catch something before it reaches its destination</div><div class="tip-zh">🇨🇳 攔截</div><div class="tip-example">&quot;Air defenses intercepted two drones near Dubai airport.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('intercepted')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span> near Dubai airport injuring four people.</span> <span class="sentence" onclick="playSentence('world', 1, this)" data-sentence="1">The Pentagon confirmed that over 150 American service members have been wounded since the war began, while Iran's Revolutionary Guards warned they would block all oil exports from the region if strikes continued.</span> <span class="sentence" onclick="playSentence('world', 2, this)" data-sentence="2">Meanwhile, the IEA's record release of 400 million barrels of oil from reserves failed to calm markets, as Brent crude continued to climb toward $99 per barrel.</span> <span class="sentence" onclick="playSentence('world', 3, this)" data-sentence="3">European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise <span class="vocab" data-word="restraint" onclick="event.stopPropagation();toggleTip(this)">restraint<span class="vocab-tip"><div class="tip-word">restraint</div><div class="tip-phonetic">/rɪˈstreɪnt/</div><div class="tip-pos">noun</div><div class="tip-def">a measure used to control or limit something</div><div class="tip-zh">🇨🇳 克制；約束</div><div class="tip-example">&quot;China urged both sides to exercise restraint.&quot;</div><button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('restraint')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen</button></span></span>.</span></div>
+        <div class="card-source-footer">📌 Source: <a href="https://www.bloomberg.com/news/articles/2026-03-11/stock-market-today-dow-s-p-live-updates-" target="_blank" rel="noopener noreferrer">Bloomberg — Read original article</a></div>
+        <div class="card-actions"><button class="action-btn" onclick="playArticle('world', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Read Aloud (Full Article)</button></div>
+      </div>
+    </article></div>
+
+  <!-- Learning Sections -->
+  <section class="learn-section" id="grammarSection">
+    <div class="collapsible-header" onclick="toggleCollapse('grammarBody', this)">
+      <h2>📚 文法重點 Grammar Highlights</h2>
+      <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="collapsible-body" id="grammarBody">
+      <p class="section-desc">從今天的文章中提取的 IELTS 重要語法結構</p>
+      <div id="grammarContent"><div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag tech">Technology</span></div>
+        <h4>Participial Phrase as Adverbial Modifier</h4>
+        <div class="learn-pattern"><strong>Pattern:</strong> Main clause + present participle phrase</div>
+        <blockquote class="learn-example">The system is described as capable of emulating the functions of software companies, signaling Musk&#x27;s ambition to expand beyond hardware.</blockquote>
+        <p class="learn-explanation">A present participial phrase (&#x27;signaling Musk&#x27;s ambition&#x27;) is attached to the main clause to provide additional information about the result or implication of the main action. This is a sophisticated way to add detail without creating a separate sentence, highly valued in IELTS academic writing.</p>
+        <p class="learn-zh">現在分詞短語（signaling Musk&#x27;s ambition）附加在主句後，用於提供主要動作的結果或含義的附加信息。這是一種無需另起句子即可增加細節的精練手法，在雅思學術寫作中備受推崇。</p>
+        <div class="learn-practice"><strong>Practice:</strong> The company launched its new product line, ___ (signal) a major shift in its business strategy and ___ (expand) into new markets.</div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag finance">Finance</span></div>
+        <h4>Concessive Clause with Comparative Structure</h4>
+        <div class="learn-pattern"><strong>Pattern:</strong> Despite + noun phrase, subject + continued to + verb</div>
+        <blockquote class="learn-example">Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel.</blockquote>
+        <p class="learn-explanation">The &#x27;Despite + noun phrase&#x27; construction creates a concessive meaning, showing that the result is unexpected given the circumstances. Combined with &#x27;continued to + verb&#x27;, it emphasizes persistence against expectations. This pattern is extremely useful in IELTS Task 2 for discussing contradictions.</p>
+        <p class="learn-zh">&#x27;Despite + 名詞短語&#x27; 構成讓步含義，表明結果在該情況下出乎意料。結合 &#x27;continued to + 動詞&#x27;，強調違反預期的持續性。此句式在雅思 Task 2 中討論矛盾現象時極為實用。</p>
+        <div class="learn-practice"><strong>Practice:</strong> Despite the government&#x27;s ___ (intervene), unemployment ___ (continue) to rise, with youth joblessness ___ (approach) record levels.</div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag stem">STEM</span></div>
+        <h4>Complex Noun Phrase with Post-modification</h4>
+        <div class="learn-pattern"><strong>Pattern:</strong> Noun + past participle phrase + prepositional phrase</div>
+        <blockquote class="learn-example">Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen.</blockquote>
+        <p class="learn-explanation">This sentence layers multiple post-modifiers: a relative clause (&#x27;that had been deeply frozen&#x27;) modifying &#x27;mouse brains&#x27;, within a prepositional phrase (&#x27;in mouse brains&#x27;) modifying &#x27;neural activity&#x27;. This dense noun phrase construction is characteristic of academic writing and demonstrates advanced grammatical range.</p>
+        <p class="learn-zh">此句疊加多重後置修飾語：關係從句（that had been deeply frozen）修飾 mouse brains，介詞短語（in mouse brains）修飾 neural activity。這種密集的名詞短語構造是學術寫作的特徵，展示了高級語法能力。</p>
+        <div class="learn-practice"><strong>Practice:</strong> Scientists have made a significant ___ (break) by identifying genetic markers in patients who had been ___ (diagnose) with early-onset dementia.</div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag world">International</span></div>
+        <h4>Absolute Phrase with While-clause for Contrasting Actions</h4>
+        <div class="learn-pattern"><strong>Pattern:</strong> Subject + verb + object, while + subject + verb + complement</div>
+        <blockquote class="learn-example">European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise restraint.</blockquote>
+        <p class="learn-explanation">The &#x27;while&#x27; clause creates a sharp contrast between two simultaneous actions by different actors. This structure is particularly effective in IELTS writing for presenting balanced arguments or contrasting international responses to an event.</p>
+        <p class="learn-zh">&#x27;while&#x27; 從句在不同行動者的兩個同時行動之間形成鮮明對比。這種結構在雅思寫作中呈現平衡論點或對比國際社會對同一事件的不同反應時特別有效。</p>
+        <div class="learn-practice"><strong>Practice:</strong> Western nations ___ (impose) economic sanctions on the regime, while neighbouring countries ___ (advocate) for diplomatic dialogue and peaceful resolution.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="learn-section" id="readingSection">
+    <div class="collapsible-header" onclick="toggleCollapse('readingBody', this)">
+      <h2>📖 閱讀理解 Reading Comprehension</h2>
+      <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="collapsible-body" id="readingBody">
+      <p class="section-desc">IELTS 風格的閱讀理解練習題</p>
+      <div id="readingContent"><div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag tech">Technology</span></div>
+        <div class="reading-q">
+            <p class="q-label">Q1. [True/False/Not Given] The &#x27;Macrohard&#x27; project is a collaboration between Tesla and OpenAI.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ False</p>
+              <p class="answer-explain">The article states it is a joint project between Tesla and xAI (not OpenAI). xAI is Musk&#x27;s own artificial intelligence startup.</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q2. [True/False/Not Given] Meta&#x27;s new MTIA chips will be manufactured entirely in the United States.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ Not Given</p>
+              <p class="answer-explain">The article mentions Meta is rolling out its MTIA series chips but provides no information about where they are manufactured.</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q3. What does the term &#x27;vertically integrate&#x27; in the context of this article mean?</p>
+            <div class="mc-options"><div class="mc-option"><label><input type="radio" name="mc_tech_2" value="A"> A. Combining different companies into one corporation</label></div><div class="mc-option"><label><input type="radio" name="mc_tech_2" value="B"> B. Controlling multiple stages of production from hardware to software</label></div><div class="mc-option"><label><input type="radio" name="mc_tech_2" value="C"> C. Expanding a company&#x27;s workforce across different levels</label></div><div class="mc-option"><label><input type="radio" name="mc_tech_2" value="D"> D. Building taller data centers to save space</label></div></div>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ B</p>
+              <p class="answer-explain">In context, &#x27;vertically integrate AI across hardware, software, and cloud infrastructure&#x27; means controlling multiple stages of the AI production chain.</p>
+            </details>
+          </div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag finance">Finance</span></div>
+        <div class="reading-q">
+            <p class="q-label">Q1. [True/False/Not Given] The IEA&#x27;s oil release was the largest in the organization&#x27;s history.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ True</p>
+              <p class="answer-explain">The article explicitly states it was &#x27;the largest emergency intervention in the agency&#x27;s history.&#x27;</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q2. [True/False/Not Given] West Texas Intermediate crude oil prices exceeded $99 per barrel.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ False</p>
+              <p class="answer-explain">The article states WTI was &#x27;trading above $88&#x27; while Brent crude was &#x27;approaching $99.&#x27; WTI did not reach $99.</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q3. Which combination of factors pushed the Dow to its lowest level since December?</p>
+            <div class="mc-options"><div class="mc-option"><label><input type="radio" name="mc_finance_2" value="A"> A. Rising interest rates and tech earnings</label></div><div class="mc-option"><label><input type="radio" name="mc_finance_2" value="B"> B. Rising energy costs, geopolitical uncertainty, and a stronger dollar</label></div><div class="mc-option"><label><input type="radio" name="mc_finance_2" value="C"> C. Federal Reserve rate cuts and bond market volatility</label></div><div class="mc-option"><label><input type="radio" name="mc_finance_2" value="D"> D. Chinese tariffs and supply chain disruptions</label></div></div>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ B</p>
+              <p class="answer-explain">The article explicitly lists &#x27;rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar&#x27; as the factors.</p>
+            </details>
+          </div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag stem">STEM</span></div>
+        <div class="reading-q">
+            <p class="q-label">Q1. [True/False/Not Given] The frozen brain study was conducted on human subjects.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ False</p>
+              <p class="answer-explain">The article clearly states the research involved &#x27;mouse brains,&#x27; not human subjects.</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q2. [True/False/Not Given] The cryopreservation technique could eventually be used for human hibernation during space travel.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ Not Given</p>
+              <p class="answer-explain">While the article mentions &#x27;long-duration space travel&#x27; as a potential implication, it does not specifically state the technique could be used for human hibernation. It notes &#x27;cryosleep remains in the realm of science fiction.&#x27;</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q3. What was essential to restoring brain function after thawing?</p>
+            <div class="mc-options"><div class="mc-option"><label><input type="radio" name="mc_stem_2" value="A"> A. Electrical stimulation of neurons</label></div><div class="mc-option"><label><input type="radio" name="mc_stem_2" value="B"> B. Gradual warming over several days</label></div><div class="mc-option"><label><input type="radio" name="mc_stem_2" value="C"> C. Targeted chemical treatments combined with cryopreservation protocols</label></div><div class="mc-option"><label><input type="radio" name="mc_stem_2" value="D"> D. Gene therapy applied to frozen tissue</label></div></div>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ C</p>
+              <p class="answer-explain">The article states &#x27;careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.&#x27;</p>
+            </details>
+          </div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag world">International</span></div>
+        <div class="reading-q">
+            <p class="q-label">Q1. [True/False/Not Given] Iran successfully blocked oil exports through the Strait of Hormuz.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ False</p>
+              <p class="answer-explain">The article states Iran&#x27;s Revolutionary Guards &#x27;warned they would block all oil exports&#x27; — this is a threat, not an action that has been carried out.</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q2. [True/False/Not Given] The drones near Dubai airport were launched by Iran&#x27;s Revolutionary Guards.</p>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ Not Given</p>
+              <p class="answer-explain">The article mentions drones were intercepted near Dubai airport but does not specify who launched them.</p>
+            </details>
+          </div><div class="reading-q">
+            <p class="q-label">Q3. What was the market&#x27;s reaction to the IEA&#x27;s record oil release?</p>
+            <div class="mc-options"><div class="mc-option"><label><input type="radio" name="mc_world_2" value="A"> A. Oil prices dropped sharply below $80</label></div><div class="mc-option"><label><input type="radio" name="mc_world_2" value="B"> B. Markets stabilized and the Dow recovered</label></div><div class="mc-option"><label><input type="radio" name="mc_world_2" value="C"> C. Brent crude continued to climb toward $99 per barrel</label></div><div class="mc-option"><label><input type="radio" name="mc_world_2" value="D"> D. Investors shifted money from oil stocks to tech stocks</label></div></div>
+            <details class="answer-reveal"><summary>Show Answer</summary>
+              <p class="answer-text">✅ C</p>
+              <p class="answer-explain">The article states the release &#x27;failed to calm markets, as Brent crude continued to climb toward $99 per barrel.&#x27;</p>
+            </details>
+          </div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="learn-section" id="writingSection">
+    <div class="collapsible-header" onclick="toggleCollapse('writingBody', this)">
+      <h2>✍️ 寫作素材 Writing Material</h2>
+      <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="collapsible-body" id="writingBody">
+      <p class="section-desc">可用於 IELTS 寫作的好句子、搭配詞組和論點</p>
+      <div id="writingContent"><div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag tech">Technology</span></div>
+        <h4>Useful Phrases</h4><ul class="writing-list"><li><strong>signaling an ambition to</strong> (表明……的雄心) — <em>The announcement signals Musk&#x27;s ambition to expand beyond hardware and AI models into enterprise software.</em></li><li><strong>the landscape is rapidly shifting</strong> (格局正在迅速變化) — <em>The tech landscape is rapidly shifting as major players race to vertically integrate AI across their operations.</em></li></ul>
+        <h4>Collocations</h4><ul class="writing-list"><li><strong>roll out + product</strong> — <em>Meta simultaneously rolls out its own in-house AI chips to support data center expansion.</em></li><li><strong>race to + verb</strong> — <em>Major players race to vertically integrate AI across hardware, software, and cloud infrastructure.</em></li></ul>
+        <div class="model-sentence"><strong>Model Sentence:</strong><blockquote>The announcement comes as Meta simultaneously rolls out its own in-house AI chips, the latest generation of its MTIA series, to support its massive data center expansion.</blockquote><p class="learn-zh">這一消息發佈之際，Meta 同時推出了其自研 AI 晶片的最新一代 MTIA 系列，以支持其大規模資料中心擴張。</p></div>
+        <div class="writing-tip">💡 <strong>Writing Tip:</strong> Use &#x27;as&#x27; clauses to show simultaneity between events. This technique allows you to pack more context into a single sentence, demonstrating the kind of complex sentence structure that IELTS examiners reward with higher band scores.</div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag finance">Finance</span></div>
+        <h4>Useful Phrases</h4><ul class="writing-list"><li><strong>the largest ... in history</strong> (歷史上最大的……) — <em>The IEA announced the largest emergency intervention in the agency&#x27;s history to stabilize oil markets.</em></li><li><strong>the combination of ... pushed</strong> (……的綜合作用推動了) — <em>The combination of rising energy costs, geopolitical uncertainty, and a strengthening dollar pushed the Dow lower.</em></li></ul>
+        <h4>Collocations</h4><ul class="writing-list"><li><strong>climb + toward</strong> — <em>Oil prices continued to climb toward $99 per barrel despite the emergency intervention.</em></li><li><strong>disrupt + operations</strong> — <em>Attacks near the Strait of Hormuz further disrupted maritime operations.</em></li></ul>
+        <div class="model-sentence"><strong>Model Sentence:</strong><blockquote>The combination of rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.</blockquote><p class="learn-zh">能源成本上升、地緣政治不確定性和美元走強的綜合作用，將道瓊斯工業平均指數推至去年十二月以來的最低水平。</p></div>
+        <div class="writing-tip">💡 <strong>Writing Tip:</strong> The &#x27;combination of X, Y, and Z&#x27; structure is powerful for enumerating multiple causes leading to a single effect. In IELTS Task 2, this helps you demonstrate analytical thinking by linking multiple factors to outcomes.</div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag stem">STEM</span></div>
+        <h4>Useful Phrases</h4><ul class="writing-list"><li><strong>achieve a groundbreaking milestone</strong> (取得突破性的里程碑) — <em>Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in frozen brains.</em></li><li><strong>far-reaching implications for</strong> (對……有深遠的影響) — <em>The findings could have far-reaching implications for organ preservation and space travel.</em></li></ul>
+        <h4>Collocations</h4><ul class="writing-list"><li><strong>restore + signaling</strong> — <em>Targeted chemical treatments helped restore synaptic signaling after thawing.</em></li><li><strong>represent + step toward</strong> — <em>The research represents a significant step toward understanding how tissue survives extreme cold.</em></li></ul>
+        <div class="model-sentence"><strong>Model Sentence:</strong><blockquote>While full &#x27;cryosleep&#x27; remains in the realm of science fiction, the research represents a significant step toward understanding how biological tissue can survive extreme cold.</blockquote><p class="learn-zh">雖然完全的「冷凍休眠」仍屬科幻範疇，但這項研究代表了理解生物組織如何在極端低溫下存活的重要一步。</p></div>
+        <div class="writing-tip">💡 <strong>Writing Tip:</strong> The &#x27;While X remains ..., Y represents ...&#x27; structure elegantly balances limitations against achievements. Use this in IELTS to show nuanced thinking — acknowledging what hasn&#x27;t been achieved while highlighting what has.</div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag world">International</span></div>
+        <h4>Useful Phrases</h4><ul class="writing-list"><li><strong>failed to calm markets</strong> (未能安撫市場) — <em>The IEA&#x27;s record release of oil reserves failed to calm markets as crude continued to climb.</em></li><li><strong>urged both sides to exercise restraint</strong> (敦促雙方保持克制) — <em>China urged both sides to exercise restraint amid the escalating conflict.</em></li></ul>
+        <h4>Collocations</h4><ul class="writing-list"><li><strong>conflict + intensify</strong> — <em>The US-Iran conflict intensified as three vessels were attacked near the Strait of Hormuz.</em></li><li><strong>increase + support</strong> — <em>European allies have increased military support in the region.</em></li></ul>
+        <div class="model-sentence"><strong>Model Sentence:</strong><blockquote>Meanwhile, the IEA&#x27;s record release of 400 million barrels of oil from reserves failed to calm markets, as Brent crude continued to climb toward $99 per barrel.</blockquote><p class="learn-zh">與此同時，國際能源署創紀錄地從儲備中釋放4億桶石油，卻未能安撫市場，布倫特原油繼續攀升至接近每桶99美元。</p></div>
+        <div class="writing-tip">💡 <strong>Writing Tip:</strong> Use &#x27;Meanwhile&#x27; at the start of a sentence to introduce a contrasting or simultaneous development. In IELTS essays, this helps you structure parallel arguments and show how different aspects of a situation unfold at the same time.</div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="learn-section" id="listeningSection">
+    <div class="collapsible-header" onclick="toggleCollapse('listeningBody', this)">
+      <h2>🎧 聽力填空 Listening Gap-fill</h2>
+      <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="collapsible-body" id="listeningBody">
+      <p class="section-desc">邊聽 AI 語音邊填寫，訓練聽力與拼寫</p>
+      <div id="listeningContent"><div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag tech">Technology</span></div>
+        <p class="ls-instructions">聆聽文章錄音，用所聽到的詞語填寫空白處。<br>Listen to the article and fill in the blanks with the words you hear.</p>
+        <div class="listening-sentence">
+            <div class="ls-number">1.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">Elon Musk on Wednesday <input type="text" class="gap-input" data-answer="unveiled" placeholder="..." size="10"> a joint project between Tesla and his artificial intelligence <input type="text" class="gap-input" data-answer="startup" placeholder="..." size="9"> xAI, which he called &#x27;Macrohard&#x27; or &#x27;Digital Optimus.&#x27;</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('tech', 0, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ unveiled, startup</p>
+                <p class="ls-full">Elon Musk on Wednesday unveiled a joint project between Tesla and his artificial intelligence startup xAI, which he called &#x27;Macrohard&#x27; or &#x27;Digital Optimus.&#x27;</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">2.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The system is described as <input type="text" class="gap-input" data-answer="capable" placeholder="..." size="9"> of emulating the functions of software companies, <input type="text" class="gap-input" data-answer="signaling" placeholder="..." size="11"> Musk&#x27;s ambition to expand beyond hardware and AI models into <input type="text" class="gap-input" data-answer="enterprise" placeholder="..." size="12"> software.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('tech', 1, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ capable, signaling, enterprise</p>
+                <p class="ls-full">The system is described as capable of emulating the functions of software companies, signaling Musk&#x27;s ambition to expand beyond hardware and AI models into enterprise software.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">3.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The tech <input type="text" class="gap-input" data-answer="landscape" placeholder="..." size="11"> is rapidly shifting as major players race to <input type="text" class="gap-input" data-answer="vertically" placeholder="..." size="12"> integrate AI across hardware, software, and cloud <input type="text" class="gap-input" data-answer="infrastructure" placeholder="..." size="16">.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('tech', 3, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ landscape, vertically, infrastructure</p>
+                <p class="ls-full">The tech landscape is rapidly shifting as major players race to vertically integrate AI across hardware, software, and cloud infrastructure.</p>
+              </details>
+            </div>
+          </div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag finance">Finance</span></div>
+        <p class="ls-instructions">聆聽文章錄音，用所聽到的詞語填寫空白處。<br>Listen to the article and fill in the blanks with the words you hear.</p>
+        <div class="listening-sentence">
+            <div class="ls-number">1.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The International Energy Agency announced an <input type="text" class="gap-input" data-answer="unprecedented" placeholder="..." size="15"> release of 400 million barrels of oil from <input type="text" class="gap-input" data-answer="strategic" placeholder="..." size="11"> reserves, the largest emergency <input type="text" class="gap-input" data-answer="intervention" placeholder="..." size="14"> in the agency&#x27;s history.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('finance', 0, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ unprecedented, strategic, intervention</p>
+                <p class="ls-full">The International Energy Agency announced an unprecedented release of 400 million barrels of oil from strategic reserves, the largest emergency intervention in the agency&#x27;s history.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">2.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">Despite this <input type="text" class="gap-input" data-answer="massive" placeholder="..." size="9"> action, oil prices continued to <input type="text" class="gap-input" data-answer="climb" placeholder="..." size="7"> on Wednesday, with Brent crude <input type="text" class="gap-input" data-answer="approaching" placeholder="..." size="13"> $99 per barrel and West Texas Intermediate trading above $88.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('finance', 1, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ massive, climb, approaching</p>
+                <p class="ls-full">Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel and West Texas Intermediate trading above $88.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">3.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The <input type="text" class="gap-input" data-answer="combination" placeholder="..." size="13"> of rising energy costs, <input type="text" class="gap-input" data-answer="geopolitical" placeholder="..." size="14"> uncertainty, and a <input type="text" class="gap-input" data-answer="strengthening" placeholder="..." size="15"> U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('finance', 3, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ combination, geopolitical, strengthening</p>
+                <p class="ls-full">The combination of rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.</p>
+              </details>
+            </div>
+          </div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag stem">STEM</span></div>
+        <p class="ls-instructions">聆聽文章錄音，用所聽到的詞語填寫空白處。<br>Listen to the article and fill in the blanks with the words you hear.</p>
+        <div class="listening-sentence">
+            <div class="ls-number">1.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">Researchers have achieved a <input type="text" class="gap-input" data-answer="groundbreaking" placeholder="..." size="16"> milestone by successfully <input type="text" class="gap-input" data-answer="reviving" placeholder="..." size="10"> neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('stem', 0, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ groundbreaking, reviving</p>
+                <p class="ls-full">Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">2.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The technique involved careful <input type="text" class="gap-input" data-answer="cryopreservation" placeholder="..." size="18"> protocols combined with targeted chemical treatments to restore <input type="text" class="gap-input" data-answer="synaptic" placeholder="..." size="10"> signaling after thawing.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('stem', 1, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ cryopreservation, synaptic</p>
+                <p class="ls-full">The technique involved careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">3.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The findings could have far-reaching <input type="text" class="gap-input" data-answer="implications" placeholder="..." size="14"> for organ <input type="text" class="gap-input" data-answer="preservation" placeholder="..." size="14">, long-duration space travel, and <input type="text" class="gap-input" data-answer="neuroscience" placeholder="..." size="14"> research.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('stem', 3, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ implications, preservation, neuroscience</p>
+                <p class="ls-full">The findings could have far-reaching implications for organ preservation, long-duration space travel, and neuroscience research.</p>
+              </details>
+            </div>
+          </div>
+      </div>
+<div class="learn-card">
+        <div class="learn-card-cat"><span class="card-tag world">International</span></div>
+        <p class="ls-instructions">聆聽文章錄音，用所聯到的詞語填寫空白處。<br>Listen to the article and fill in the blanks with the words you hear.</p>
+        <div class="listening-sentence">
+            <div class="ls-number">1.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">Three commercial <input type="text" class="gap-input" data-answer="vessels" placeholder="..." size="9"> were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict <input type="text" class="gap-input" data-answer="intensified" placeholder="..." size="13">, with <input type="text" class="gap-input" data-answer="projectiles" placeholder="..." size="13"> hitting a container ship and drones intercepted near Dubai airport injuring four people.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('world', 0, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ vessels, intensified, projectiles</p>
+                <p class="ls-full">Three commercial vessels were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict intensified, with projectiles hitting a container ship and drones intercepted near Dubai airport injuring four people.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">2.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">The Pentagon <input type="text" class="gap-input" data-answer="confirmed" placeholder="..." size="11"> that over 150 American service members have been <input type="text" class="gap-input" data-answer="wounded" placeholder="..." size="9"> since the war began, while Iran&#x27;s Revolutionary Guards warned they would block all oil exports from the region if strikes continued.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('world', 1, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ confirmed, wounded</p>
+                <p class="ls-full">The Pentagon confirmed that over 150 American service members have been wounded since the war began, while Iran&#x27;s Revolutionary Guards warned they would block all oil exports from the region if strikes continued.</p>
+              </details>
+            </div>
+          </div><div class="listening-sentence">
+            <div class="ls-number">3.</div>
+            <div class="ls-content">
+              <p class="ls-gapped">European <input type="text" class="gap-input" data-answer="allies" placeholder="..." size="8"> including France, Greece, and the UK have increased military support, while China urged both sides to exercise <input type="text" class="gap-input" data-answer="restraint" placeholder="..." size="11">.</p>
+              <button class="action-btn ls-play-btn" onclick="playSentence('world', 3, this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Play sentence
+              </button>
+              <details class="answer-reveal"><summary>Show Answer</summary>
+                <p class="answer-text">✅ allies, restraint</p>
+                <p class="ls-full">European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise restraint.</p>
+              </details>
+            </div>
+          </div>
+      </div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p style="margin-bottom:6px;">Designed for IELTS learners — read, listen, and expand your vocabulary daily.</p>
+    <p><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></p>
+  </div>
+</footer>
+
+<!-- Hidden audio elements -->
+<audio id="audioPlayer" preload="none"></audio>
+
+<script>
+// ====== THEME TOGGLE ======
+let currentTheme = 'light';
+function getCookie(name) {
+  const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function setCookie(name, val) {
+  document.cookie = name + '=' + encodeURIComponent(val) + '; path=/; max-age=31536000; SameSite=Lax';
+}
+function initTheme() {
+  const saved = getCookie('news-theme');
+  currentTheme = (saved === 'dark') ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateThemeLabel();
+}
+function toggleTheme() {
+  currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  setCookie('news-theme', currentTheme);
+  updateThemeLabel();
+}
+function updateThemeLabel() {
+  const label = document.getElementById('themeLabel');
+  if (label) {
+    label.textContent = currentTheme === 'dark' ? '\u{1F319} \u591C\u9593' : '\u2600\uFE0F \u65E5\u9593';
+  }
+}
+initTheme();
+
+const speakerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+const linkSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+const tapSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11V5a3 3 0 0 0-6 0v6"/><path d="M18 11a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H9l-4-4 1.5-1.5A2 2 0 0 1 8 11h0"/></svg>`;
+
+const NEWS_DATA = {"date": "Thursday, March 12, 2026", "articles": [{"category": "tech", "categoryLabel": "Technology", "title": "Musk Unveils Joint Tesla-xAI Project 'Macrohard' to Disrupt Software Industry", "summary": "Elon Musk on Wednesday unveiled a joint project between Tesla and his artificial intelligence startup xAI, which he called 'Macrohard' or 'Digital Optimus.' The system is described as capable of emulating the functions of software companies, signaling Musk's ambition to expand beyond hardware and AI models into enterprise software. The announcement comes as Meta simultaneously rolls out its own in-house AI chips, the latest generation of its MTIA series, to support its massive data center expansion. The tech landscape is rapidly shifting as major players race to vertically integrate AI across hardware, software, and cloud infrastructure.", "source": "Reuters", "url": "https://www.reuters.com/technology/", "vocabulary": [{"word": "unveil", "phonetic": "/ʌnˈveɪl/", "pos": "verb", "definition": "to show or announce something publicly for the first time", "zh": "揭幕；公開", "example": "Musk unveiled the joint project at a press event."}, {"word": "emulate", "phonetic": "/ˈemjuleɪt/", "pos": "verb", "definition": "to match or surpass by imitation", "zh": "模仿；仿效", "example": "The system is capable of emulating the functions of software companies."}, {"word": "vertically", "phonetic": "/ˈvɜːtɪkli/", "pos": "adverb", "definition": "in a way that involves different stages of a production process", "zh": "縱向地；垂直地", "example": "Major players race to vertically integrate AI across their operations."}, {"word": "infrastructure", "phonetic": "/ˈɪnfrəstrʌktʃə/", "pos": "noun", "definition": "the basic physical and organizational structures needed for operation", "zh": "基礎設施", "example": "Cloud infrastructure is becoming a key battleground in the AI race."}], "sentences": ["Elon Musk on Wednesday unveiled a joint project between Tesla and his artificial intelligence startup xAI, which he called 'Macrohard' or 'Digital Optimus.'", "The system is described as capable of emulating the functions of software companies, signaling Musk's ambition to expand beyond hardware and AI models into enterprise software.", "The announcement comes as Meta simultaneously rolls out its own in-house AI chips, the latest generation of its MTIA series, to support its massive data center expansion.", "The tech landscape is rapidly shifting as major players race to vertically integrate AI across hardware, software, and cloud infrastructure."], "timings": {"us": {"title": {"start": 0.3, "end": 6.18}, "sentences": [{"start": 6.96, "end": 17.14}, {"start": 17.58, "end": 28.46}, {"start": 29.12, "end": 40.12}, {"start": 40.76, "end": 49.14}]}, "gb": {"title": {"start": 0.1, "end": 7.06}, "sentences": [{"start": 8.22, "end": 20.62}, {"start": 20.62, "end": 34.86}, {"start": 35.78, "end": 49.32}, {"start": 50.32, "end": 60.22}]}}}, {"category": "finance", "categoryLabel": "Finance", "title": "Oil Prices Surge as IEA Releases Record 400 Million Barrels from Strategic Reserves", "summary": "The International Energy Agency announced an unprecedented release of 400 million barrels of oil from strategic reserves, the largest emergency intervention in the agency's history. Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel and West Texas Intermediate trading above $88. Three commercial vessels were attacked near the Strait of Hormuz on Wednesday morning, further disrupting maritime operations. The combination of rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.", "source": "The Wall Street Journal", "url": "https://www.wsj.com/livecoverage/cpi-inflation-data-stock-market-03-11-2026", "vocabulary": [{"word": "unprecedented", "phonetic": "/ʌnˈpresɪdentɪd/", "pos": "adjective", "definition": "never done or known before", "zh": "史無前例的", "example": "The IEA announced an unprecedented release of oil from strategic reserves."}, {"word": "intervention", "phonetic": "/ˌɪntəˈvenʃn/", "pos": "noun", "definition": "the action of becoming involved in a situation to improve or prevent it", "zh": "干預；介入", "example": "This is the largest emergency intervention in the agency's history."}, {"word": "maritime", "phonetic": "/ˈmærɪtaɪm/", "pos": "adjective", "definition": "connected with the sea, especially in relation to trade or shipping", "zh": "海事的；海運的", "example": "Attacks near the Strait of Hormuz disrupted maritime operations."}, {"word": "geopolitical", "phonetic": "/ˌdʒiːəʊpəˈlɪtɪkl/", "pos": "adjective", "definition": "relating to politics, especially international relations, as influenced by geographical factors", "zh": "地緣政治的", "example": "Geopolitical uncertainty continues to weigh on global markets."}], "sentences": ["The International Energy Agency announced an unprecedented release of 400 million barrels of oil from strategic reserves, the largest emergency intervention in the agency's history.", "Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel and West Texas Intermediate trading above $88.", "Three commercial vessels were attacked near the Strait of Hormuz on Wednesday morning, further disrupting maritime operations.", "The combination of rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December."], "timings": {"us": {"title": {"start": 0.18, "end": 7.3}, "sentences": [{"start": 7.84, "end": 20.26}, {"start": 20.9, "end": 32.46}, {"start": 34.0, "end": 42.24}, {"start": 42.26, "end": 53.86}]}, "gb": {"title": {"start": 0.08, "end": 8.3}, "sentences": [{"start": 8.34, "end": 20.94}, {"start": 21.76, "end": 34.24}, {"start": 35.74, "end": 43.38}, {"start": 44.0, "end": 56.06}]}}}, {"category": "stem", "categoryLabel": "STEM", "title": "Scientists Revive Activity in Frozen Mouse Brains for the First Time", "summary": "Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen, according to a study published in Nature. The technique involved careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing. While full 'cryosleep' remains in the realm of science fiction, the research represents a significant step toward understanding how biological tissue can survive extreme cold. The findings could have far-reaching implications for organ preservation, long-duration space travel, and neuroscience research.", "source": "Nature", "url": "https://www.nature.com/news", "vocabulary": [{"word": "revive", "phonetic": "/rɪˈvaɪv/", "pos": "verb", "definition": "to restore to life, consciousness, or activity", "zh": "使復活；恢復", "example": "Scientists revived neural activity in frozen mouse brains."}, {"word": "cryopreservation", "phonetic": "/ˌkraɪəʊˌprezəˈveɪʃn/", "pos": "noun", "definition": "the process of preserving biological material by cooling to very low temperatures", "zh": "低溫保存", "example": "The technique involved careful cryopreservation protocols."}, {"word": "synaptic", "phonetic": "/sɪˈnæptɪk/", "pos": "adjective", "definition": "relating to the junction between two nerve cells", "zh": "突觸的", "example": "Chemical treatments helped restore synaptic signaling after thawing."}, {"word": "implications", "phonetic": "/ˌɪmplɪˈkeɪʃnz/", "pos": "noun", "definition": "the possible effects or results of an action or decision", "zh": "影響；意涵", "example": "The findings could have far-reaching implications for organ preservation."}], "sentences": ["Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.", "The technique involved careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.", "While full 'cryosleep' remains in the realm of science fiction, the research represents a significant step toward understanding how biological tissue can survive extreme cold.", "The findings could have far-reaching implications for organ preservation, long-duration space travel, and neuroscience research."], "timings": {"us": {"title": {"start": 0.34, "end": 6.26}, "sentences": [{"start": 6.34, "end": 19.72}, {"start": 19.78, "end": 30.26}, {"start": 30.98, "end": 43.58}, {"start": 44.32, "end": 53.46}]}, "gb": {"title": {"start": 0.08, "end": 5.46}, "sentences": [{"start": 6.54, "end": 17.64}, {"start": 18.48, "end": 28.78}, {"start": 29.6, "end": 42.38}, {"start": 43.28, "end": 51.34}]}}}, {"category": "world", "categoryLabel": "International", "title": "Strait of Hormuz Under Fire: Three Vessels Attacked as US-Iran Conflict Escalates", "summary": "Three commercial vessels were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict intensified, with projectiles hitting a container ship and drones intercepted near Dubai airport injuring four people. The Pentagon confirmed that over 150 American service members have been wounded since the war began, while Iran's Revolutionary Guards warned they would block all oil exports from the region if strikes continued. Meanwhile, the IEA's record release of 400 million barrels of oil from reserves failed to calm markets, as Brent crude continued to climb toward $99 per barrel. European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise restraint.", "source": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-03-11/stock-market-today-dow-s-p-live-updates-", "vocabulary": [{"word": "escalate", "phonetic": "/ˈeskəleɪt/", "pos": "verb", "definition": "to increase rapidly; to become or make more intense", "zh": "升級；加劇", "example": "The US-Iran conflict continued to escalate throughout the week."}, {"word": "projectile", "phonetic": "/prəˈdʒektaɪl/", "pos": "noun", "definition": "a missile or object designed to be fired or thrown", "zh": "投射物；砲彈", "example": "A projectile hit a container ship near the strait."}, {"word": "restraint", "phonetic": "/rɪˈstreɪnt/", "pos": "noun", "definition": "a measure used to control or limit something", "zh": "克制；約束", "example": "China urged both sides to exercise restraint."}, {"word": "intercepted", "phonetic": "/ˌɪntəˈseptɪd/", "pos": "verb", "definition": "to stop and catch something before it reaches its destination", "zh": "攔截", "example": "Air defenses intercepted two drones near Dubai airport."}], "sentences": ["Three commercial vessels were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict intensified, with projectiles hitting a container ship and drones intercepted near Dubai airport injuring four people.", "The Pentagon confirmed that over 150 American service members have been wounded since the war began, while Iran's Revolutionary Guards warned they would block all oil exports from the region if strikes continued.", "Meanwhile, the IEA's record release of 400 million barrels of oil from reserves failed to calm markets, as Brent crude continued to climb toward $99 per barrel.", "European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise restraint."], "timings": {"us": {"title": {"start": 0.2, "end": 6.06}, "sentences": [{"start": 0, "end": 5}, {"start": 7.36, "end": 12.6}, {"start": 35.14, "end": 48.72}, {"start": 48.78, "end": 59.06}]}, "gb": {"title": {"start": 0.08, "end": 6.86}, "sentences": [{"start": 7.98, "end": 24.06}, {"start": 24.9, "end": 41.54}, {"start": 41.58, "end": 55.8}, {"start": 55.88, "end": 67.1}]}}}], "learning": {"grammar": [{"category": "tech", "structure": "Participial Phrase as Adverbial Modifier", "pattern": "Main clause + present participle phrase", "example": "The system is described as capable of emulating the functions of software companies, signaling Musk's ambition to expand beyond hardware.", "explanation": "A present participial phrase ('signaling Musk's ambition') is attached to the main clause to provide additional information about the result or implication of the main action. This is a sophisticated way to add detail without creating a separate sentence, highly valued in IELTS academic writing.", "zh_explanation": "現在分詞短語（signaling Musk's ambition）附加在主句後，用於提供主要動作的結果或含義的附加信息。這是一種無需另起句子即可增加細節的精練手法，在雅思學術寫作中備受推崇。", "practice": "The company launched its new product line, ___ (signal) a major shift in its business strategy and ___ (expand) into new markets."}, {"category": "finance", "structure": "Concessive Clause with Comparative Structure", "pattern": "Despite + noun phrase, subject + continued to + verb", "example": "Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel.", "explanation": "The 'Despite + noun phrase' construction creates a concessive meaning, showing that the result is unexpected given the circumstances. Combined with 'continued to + verb', it emphasizes persistence against expectations. This pattern is extremely useful in IELTS Task 2 for discussing contradictions.", "zh_explanation": "'Despite + 名詞短語' 構成讓步含義，表明結果在該情況下出乎意料。結合 'continued to + 動詞'，強調違反預期的持續性。此句式在雅思 Task 2 中討論矛盾現象時極為實用。", "practice": "Despite the government's ___ (intervene), unemployment ___ (continue) to rise, with youth joblessness ___ (approach) record levels."}, {"category": "stem", "structure": "Complex Noun Phrase with Post-modification", "pattern": "Noun + past participle phrase + prepositional phrase", "example": "Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen.", "explanation": "This sentence layers multiple post-modifiers: a relative clause ('that had been deeply frozen') modifying 'mouse brains', within a prepositional phrase ('in mouse brains') modifying 'neural activity'. This dense noun phrase construction is characteristic of academic writing and demonstrates advanced grammatical range.", "zh_explanation": "此句疊加多重後置修飾語：關係從句（that had been deeply frozen）修飾 mouse brains，介詞短語（in mouse brains）修飾 neural activity。這種密集的名詞短語構造是學術寫作的特徵，展示了高級語法能力。", "practice": "Scientists have made a significant ___ (break) by identifying genetic markers in patients who had been ___ (diagnose) with early-onset dementia."}, {"category": "world", "structure": "Absolute Phrase with While-clause for Contrasting Actions", "pattern": "Subject + verb + object, while + subject + verb + complement", "example": "European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise restraint.", "explanation": "The 'while' clause creates a sharp contrast between two simultaneous actions by different actors. This structure is particularly effective in IELTS writing for presenting balanced arguments or contrasting international responses to an event.", "zh_explanation": "'while' 從句在不同行動者的兩個同時行動之間形成鮮明對比。這種結構在雅思寫作中呈現平衡論點或對比國際社會對同一事件的不同反應時特別有效。", "practice": "Western nations ___ (impose) economic sanctions on the regime, while neighbouring countries ___ (advocate) for diplomatic dialogue and peaceful resolution."}], "reading": [{"category": "tech", "questions": [{"type": "True/False/Not Given", "statement": "The 'Macrohard' project is a collaboration between Tesla and OpenAI.", "answer": "False", "explanation": "The article states it is a joint project between Tesla and xAI (not OpenAI). xAI is Musk's own artificial intelligence startup."}, {"type": "True/False/Not Given", "statement": "Meta's new MTIA chips will be manufactured entirely in the United States.", "answer": "Not Given", "explanation": "The article mentions Meta is rolling out its MTIA series chips but provides no information about where they are manufactured."}, {"type": "Multiple Choice", "question": "What does the term 'vertically integrate' in the context of this article mean?", "options": ["A. Combining different companies into one corporation", "B. Controlling multiple stages of production from hardware to software", "C. Expanding a company's workforce across different levels", "D. Building taller data centers to save space"], "answer": "B", "explanation": "In context, 'vertically integrate AI across hardware, software, and cloud infrastructure' means controlling multiple stages of the AI production chain."}]}, {"category": "finance", "questions": [{"type": "True/False/Not Given", "statement": "The IEA's oil release was the largest in the organization's history.", "answer": "True", "explanation": "The article explicitly states it was 'the largest emergency intervention in the agency's history.'"}, {"type": "True/False/Not Given", "statement": "West Texas Intermediate crude oil prices exceeded $99 per barrel.", "answer": "False", "explanation": "The article states WTI was 'trading above $88' while Brent crude was 'approaching $99.' WTI did not reach $99."}, {"type": "Multiple Choice", "question": "Which combination of factors pushed the Dow to its lowest level since December?", "options": ["A. Rising interest rates and tech earnings", "B. Rising energy costs, geopolitical uncertainty, and a stronger dollar", "C. Federal Reserve rate cuts and bond market volatility", "D. Chinese tariffs and supply chain disruptions"], "answer": "B", "explanation": "The article explicitly lists 'rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar' as the factors."}]}, {"category": "stem", "questions": [{"type": "True/False/Not Given", "statement": "The frozen brain study was conducted on human subjects.", "answer": "False", "explanation": "The article clearly states the research involved 'mouse brains,' not human subjects."}, {"type": "True/False/Not Given", "statement": "The cryopreservation technique could eventually be used for human hibernation during space travel.", "answer": "Not Given", "explanation": "While the article mentions 'long-duration space travel' as a potential implication, it does not specifically state the technique could be used for human hibernation. It notes 'cryosleep remains in the realm of science fiction.'"}, {"type": "Multiple Choice", "question": "What was essential to restoring brain function after thawing?", "options": ["A. Electrical stimulation of neurons", "B. Gradual warming over several days", "C. Targeted chemical treatments combined with cryopreservation protocols", "D. Gene therapy applied to frozen tissue"], "answer": "C", "explanation": "The article states 'careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.'"}]}, {"category": "world", "questions": [{"type": "True/False/Not Given", "statement": "Iran successfully blocked oil exports through the Strait of Hormuz.", "answer": "False", "explanation": "The article states Iran's Revolutionary Guards 'warned they would block all oil exports' — this is a threat, not an action that has been carried out."}, {"type": "True/False/Not Given", "statement": "The drones near Dubai airport were launched by Iran's Revolutionary Guards.", "answer": "Not Given", "explanation": "The article mentions drones were intercepted near Dubai airport but does not specify who launched them."}, {"type": "Multiple Choice", "question": "What was the market's reaction to the IEA's record oil release?", "options": ["A. Oil prices dropped sharply below $80", "B. Markets stabilized and the Dow recovered", "C. Brent crude continued to climb toward $99 per barrel", "D. Investors shifted money from oil stocks to tech stocks"], "answer": "C", "explanation": "The article states the release 'failed to calm markets, as Brent crude continued to climb toward $99 per barrel.'"}]}], "writing": [{"category": "tech", "useful_phrases": [{"phrase": "signaling an ambition to", "zh": "表明……的雄心", "context": "The announcement signals Musk's ambition to expand beyond hardware and AI models into enterprise software."}, {"phrase": "the landscape is rapidly shifting", "zh": "格局正在迅速變化", "context": "The tech landscape is rapidly shifting as major players race to vertically integrate AI across their operations."}], "collocations": [{"collocation": "roll out + product", "example": "Meta simultaneously rolls out its own in-house AI chips to support data center expansion."}, {"collocation": "race to + verb", "example": "Major players race to vertically integrate AI across hardware, software, and cloud infrastructure."}], "model_sentence": "The announcement comes as Meta simultaneously rolls out its own in-house AI chips, the latest generation of its MTIA series, to support its massive data center expansion.", "model_sentence_zh": "這一消息發佈之際，Meta 同時推出了其自研 AI 晶片的最新一代 MTIA 系列，以支持其大規模資料中心擴張。", "writing_tip": "Use 'as' clauses to show simultaneity between events. This technique allows you to pack more context into a single sentence, demonstrating the kind of complex sentence structure that IELTS examiners reward with higher band scores."}, {"category": "finance", "useful_phrases": [{"phrase": "the largest ... in history", "zh": "歷史上最大的……", "context": "The IEA announced the largest emergency intervention in the agency's history to stabilize oil markets."}, {"phrase": "the combination of ... pushed", "zh": "……的綜合作用推動了", "context": "The combination of rising energy costs, geopolitical uncertainty, and a strengthening dollar pushed the Dow lower."}], "collocations": [{"collocation": "climb + toward", "example": "Oil prices continued to climb toward $99 per barrel despite the emergency intervention."}, {"collocation": "disrupt + operations", "example": "Attacks near the Strait of Hormuz further disrupted maritime operations."}], "model_sentence": "The combination of rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.", "model_sentence_zh": "能源成本上升、地緣政治不確定性和美元走強的綜合作用，將道瓊斯工業平均指數推至去年十二月以來的最低水平。", "writing_tip": "The 'combination of X, Y, and Z' structure is powerful for enumerating multiple causes leading to a single effect. In IELTS Task 2, this helps you demonstrate analytical thinking by linking multiple factors to outcomes."}, {"category": "stem", "useful_phrases": [{"phrase": "achieve a groundbreaking milestone", "zh": "取得突破性的里程碑", "context": "Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in frozen brains."}, {"phrase": "far-reaching implications for", "zh": "對……有深遠的影響", "context": "The findings could have far-reaching implications for organ preservation and space travel."}], "collocations": [{"collocation": "restore + signaling", "example": "Targeted chemical treatments helped restore synaptic signaling after thawing."}, {"collocation": "represent + step toward", "example": "The research represents a significant step toward understanding how tissue survives extreme cold."}], "model_sentence": "While full 'cryosleep' remains in the realm of science fiction, the research represents a significant step toward understanding how biological tissue can survive extreme cold.", "model_sentence_zh": "雖然完全的「冷凍休眠」仍屬科幻範疇，但這項研究代表了理解生物組織如何在極端低溫下存活的重要一步。", "writing_tip": "The 'While X remains ..., Y represents ...' structure elegantly balances limitations against achievements. Use this in IELTS to show nuanced thinking — acknowledging what hasn't been achieved while highlighting what has."}, {"category": "world", "useful_phrases": [{"phrase": "failed to calm markets", "zh": "未能安撫市場", "context": "The IEA's record release of oil reserves failed to calm markets as crude continued to climb."}, {"phrase": "urged both sides to exercise restraint", "zh": "敦促雙方保持克制", "context": "China urged both sides to exercise restraint amid the escalating conflict."}], "collocations": [{"collocation": "conflict + intensify", "example": "The US-Iran conflict intensified as three vessels were attacked near the Strait of Hormuz."}, {"collocation": "increase + support", "example": "European allies have increased military support in the region."}], "model_sentence": "Meanwhile, the IEA's record release of 400 million barrels of oil from reserves failed to calm markets, as Brent crude continued to climb toward $99 per barrel.", "model_sentence_zh": "與此同時，國際能源署創紀錄地從儲備中釋放4億桶石油，卻未能安撫市場，布倫特原油繼續攀升至接近每桶99美元。", "writing_tip": "Use 'Meanwhile' at the start of a sentence to introduce a contrasting or simultaneous development. In IELTS essays, this helps you structure parallel arguments and show how different aspects of a situation unfold at the same time."}], "listening": [{"category": "tech", "instructions": "Listen to the article and fill in the blanks with the words you hear.", "zh_instructions": "聆聽文章錄音，用所聽到的詞語填寫空白處。", "sentences": [{"full": "Elon Musk on Wednesday unveiled a joint project between Tesla and his artificial intelligence startup xAI, which he called 'Macrohard' or 'Digital Optimus.'", "gapped": "Elon Musk on Wednesday ___ a joint project between Tesla and his artificial intelligence ___ xAI, which he called 'Macrohard' or 'Digital Optimus.'", "answers": ["unveiled", "startup"], "sentence_index": 0}, {"full": "The system is described as capable of emulating the functions of software companies, signaling Musk's ambition to expand beyond hardware and AI models into enterprise software.", "gapped": "The system is described as ___ of emulating the functions of software companies, ___ Musk's ambition to expand beyond hardware and AI models into ___ software.", "answers": ["capable", "signaling", "enterprise"], "sentence_index": 1}, {"full": "The tech landscape is rapidly shifting as major players race to vertically integrate AI across hardware, software, and cloud infrastructure.", "gapped": "The tech ___ is rapidly shifting as major players race to ___ integrate AI across hardware, software, and cloud ___.", "answers": ["landscape", "vertically", "infrastructure"], "sentence_index": 3}]}, {"category": "finance", "instructions": "Listen to the article and fill in the blanks with the words you hear.", "zh_instructions": "聆聽文章錄音，用所聽到的詞語填寫空白處。", "sentences": [{"full": "The International Energy Agency announced an unprecedented release of 400 million barrels of oil from strategic reserves, the largest emergency intervention in the agency's history.", "gapped": "The International Energy Agency announced an ___ release of 400 million barrels of oil from ___ reserves, the largest emergency ___ in the agency's history.", "answers": ["unprecedented", "strategic", "intervention"], "sentence_index": 0}, {"full": "Despite this massive action, oil prices continued to climb on Wednesday, with Brent crude approaching $99 per barrel and West Texas Intermediate trading above $88.", "gapped": "Despite this ___ action, oil prices continued to ___ on Wednesday, with Brent crude ___ $99 per barrel and West Texas Intermediate trading above $88.", "answers": ["massive", "climb", "approaching"], "sentence_index": 1}, {"full": "The combination of rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.", "gapped": "The ___ of rising energy costs, ___ uncertainty, and a ___ U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.", "answers": ["combination", "geopolitical", "strengthening"], "sentence_index": 3}]}, {"category": "stem", "instructions": "Listen to the article and fill in the blanks with the words you hear.", "zh_instructions": "聆聽文章錄音，用所聽到的詞語填寫空白處。", "sentences": [{"full": "Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.", "gapped": "Researchers have achieved a ___ milestone by successfully ___ neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.", "answers": ["groundbreaking", "reviving"], "sentence_index": 0}, {"full": "The technique involved careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.", "gapped": "The technique involved careful ___ protocols combined with targeted chemical treatments to restore ___ signaling after thawing.", "answers": ["cryopreservation", "synaptic"], "sentence_index": 1}, {"full": "The findings could have far-reaching implications for organ preservation, long-duration space travel, and neuroscience research.", "gapped": "The findings could have far-reaching ___ for organ ___, long-duration space travel, and ___ research.", "answers": ["implications", "preservation", "neuroscience"], "sentence_index": 3}]}, {"category": "world", "instructions": "Listen to the article and fill in the blanks with the words you hear.", "zh_instructions": "聆聽文章錄音，用所聯到的詞語填寫空白處。", "sentences": [{"full": "Three commercial vessels were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict intensified, with projectiles hitting a container ship and drones intercepted near Dubai airport injuring four people.", "gapped": "Three commercial ___ were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict ___, with ___ hitting a container ship and drones intercepted near Dubai airport injuring four people.", "answers": ["vessels", "intensified", "projectiles"], "sentence_index": 0}, {"full": "The Pentagon confirmed that over 150 American service members have been wounded since the war began, while Iran's Revolutionary Guards warned they would block all oil exports from the region if strikes continued.", "gapped": "The Pentagon ___ that over 150 American service members have been ___ since the war began, while Iran's Revolutionary Guards warned they would block all oil exports from the region if strikes continued.", "answers": ["confirmed", "wounded"], "sentence_index": 1}, {"full": "European allies including France, Greece, and the UK have increased military support, while China urged both sides to exercise restraint.", "gapped": "European ___ including France, Greece, and the UK have increased military support, while China urged both sides to exercise ___.", "answers": ["allies", "restraint"], "sentence_index": 3}]}]}};
+
+document.getElementById('dateDisplay').textContent = NEWS_DATA.date || new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+// ====== AUDIO ENGINE — ALL AI VOICE, PRECISE TIMESTAMPS ======
+let selectedAccent = 'us';
+let currentPlayingBtn = null;
+let currentSpeakingEl = null;
+let sentenceTrackingInterval = null;
+let activeCheckInterval = null;
+const audioPlayer = document.getElementById('audioPlayer');
+const voiceInfo = document.getElementById('voiceInfo');
+
+const voiceNames = {
+  us: 'AI Voice — Charon (American)',
+  gb: 'AI Voice — Daniel (British)'
+};
+
+function getAudioPath(type, cat) {
+  if (type === 'words') return `./audio/words_${selectedAccent}.mp3`;
+  if (type === 'article') return `./audio/article_${cat}_${selectedAccent}.mp3`;
+  return null;
+}
+
+// Get precise timing for a given category, accent, and type
+function getTiming(cat, type, idx) {
+  const article = NEWS_DATA.articles.find(a => a.category === cat);
+  if (!article || !article.timings || !article.timings[selectedAccent]) return null;
+  const t = article.timings[selectedAccent];
+  if (type === 'title') return t.title || null;
+  if (type === 'sentence' && t.sentences && t.sentences[idx]) return t.sentences[idx];
+  return null;
+}
+
+// Accent selector
+document.getElementById('accentSelector').addEventListener('click', (e) => {
+  const btn = e.target.closest('.accent-btn');
+  if (!btn) return;
+  stopAllAudio();
+  document.querySelectorAll('.accent-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedAccent = btn.dataset.accent;
+  voiceInfo.textContent = voiceNames[selectedAccent] || selectedAccent;
+});
+
+function stopAllAudio() {
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0;
+  audioPlayer.onended = null;
+  audioPlayer.ontimeupdate = null;
+  if (currentPlayingBtn) {
+    currentPlayingBtn.classList.remove('playing');
+    currentPlayingBtn = null;
+  }
+  clearSpeakingHighlights();
+  if (sentenceTrackingInterval) {
+    clearInterval(sentenceTrackingInterval);
+    sentenceTrackingInterval = null;
+  }
+  if (activeCheckInterval) {
+    clearInterval(activeCheckInterval);
+    activeCheckInterval = null;
+  }
+}
+
+function clearSpeakingHighlights() {
+  document.querySelectorAll('.speaking').forEach(el => el.classList.remove('speaking'));
+  currentSpeakingEl = null;
+}
+
+// ====== FULL ARTICLE / WORDS PLAYBACK ======
+function playAudio(src, btn) {
+  if (currentPlayingBtn === btn && !audioPlayer.paused) {
+    stopAllAudio();
+    return;
+  }
+  stopAllAudio();
+  audioPlayer.src = src;
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+  currentPlayingBtn = btn;
+  if (btn) btn.classList.add('playing');
+  audioPlayer.onended = () => { stopAllAudio(); };
+  audioPlayer.onerror = () => { stopAllAudio(); };
+}
+
+function playAllWords() {
+  const btn = document.getElementById('playAllWordsBtn');
+  playAudio(getAudioPath('words'), btn);
+}
+
+// Play full article with PRECISE sentence-by-sentence highlighting
+function playArticle(cat, btn) {
+  if (currentPlayingBtn === btn && !audioPlayer.paused) {
+    stopAllAudio();
+    return;
+  }
+  stopAllAudio();
+
+  const card = btn.closest('.article-card');
+  const titleEl = card.querySelector('.card-title-speak');
+  const sentenceEls = card.querySelectorAll('.sentence');
+  if (sentenceEls.length === 0) { playAudio(getAudioPath('article', cat), btn); return; }
+
+  const src = getAudioPath('article', cat);
+  audioPlayer.src = src;
+
+  // Build timing array from precise data: [title, sentence0, sentence1, ...]
+  const titleTiming = getTiming(cat, 'title');
+  const allTimings = [];
+  if (titleTiming && titleEl) {
+    allTimings.push({ el: titleEl, start: titleTiming.start, end: titleTiming.end });
+  }
+  sentenceEls.forEach((el, i) => {
+    const t = getTiming(cat, 'sentence', i);
+    if (t && t.start > 0) {
+      allTimings.push({ el, start: t.start, end: t.end });
+    }
+  });
+
+  // Track current sentence during playback using precise timestamps
+  sentenceTrackingInterval = setInterval(() => {
+    const t = audioPlayer.currentTime;
+    let found = false;
+    for (const timing of allTimings) {
+      if (t >= timing.start - 0.1 && t < timing.end + 0.1) {
+        if (currentSpeakingEl !== timing.el) {
+          clearSpeakingHighlights();
+          timing.el.classList.add('speaking');
+          currentSpeakingEl = timing.el;
+          timing.el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        found = true;
+        break;
+      }
+    }
+    if (!found) clearSpeakingHighlights();
+  }, 100);
+
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+  currentPlayingBtn = btn;
+  if (btn) btn.classList.add('playing');
+  audioPlayer.onended = () => { stopAllAudio(); };
+  audioPlayer.onerror = () => { stopAllAudio(); };
+}
+
+// ====== CLICK SENTENCE → PRECISE SEEK IN AI AUDIO ======
+function playSentence(cat, sentenceIdx, el) {
+  if (currentSpeakingEl === el && !audioPlayer.paused) {
+    stopAllAudio();
+    return;
+  }
+  stopAllAudio();
+
+  const timing = getTiming(cat, 'sentence', sentenceIdx);
+  if (!timing || timing.start === 0 && timing.end === 0) {
+    // Fallback: no timing data, just play full article
+    el.classList.add('speaking');
+    currentSpeakingEl = el;
+    const src = getAudioPath('article', cat);
+    audioPlayer.src = src;
+    audioPlayer.play().catch(err => console.log('Audio play error:', err));
+    audioPlayer.onended = () => { stopAllAudio(); };
+    return;
+  }
+
+  el.classList.add('speaking');
+  currentSpeakingEl = el;
+
+  const src = getAudioPath('article', cat);
+  audioPlayer.src = src;
+
+  audioPlayer.addEventListener('loadedmetadata', function onMeta() {
+    audioPlayer.removeEventListener('loadedmetadata', onMeta);
+    audioPlayer.currentTime = timing.start;
+  });
+
+  // Stop after this sentence's precise end time
+  activeCheckInterval = setInterval(() => {
+    if (audioPlayer.currentTime >= timing.end || audioPlayer.paused) {
+      clearInterval(activeCheckInterval);
+      activeCheckInterval = null;
+      if (audioPlayer.currentTime >= timing.end) {
+        stopAllAudio();
+      }
+    }
+  }, 80);
+
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+}
+
+// Play title using precise timestamp
+function playTitle(cat, el) {
+  if (currentSpeakingEl === el && !audioPlayer.paused) {
+    stopAllAudio();
+    return;
+  }
+  stopAllAudio();
+
+  const timing = getTiming(cat, 'title');
+  if (!timing) return;
+
+  el.classList.add('speaking');
+  currentSpeakingEl = el;
+
+  const src = getAudioPath('article', cat);
+  audioPlayer.src = src;
+
+  audioPlayer.addEventListener('loadedmetadata', function onMeta() {
+    audioPlayer.removeEventListener('loadedmetadata', onMeta);
+    audioPlayer.currentTime = timing.start;
+  });
+
+  activeCheckInterval = setInterval(() => {
+    if (audioPlayer.currentTime >= timing.end || audioPlayer.paused) {
+      clearInterval(activeCheckInterval);
+      activeCheckInterval = null;
+      if (audioPlayer.currentTime >= timing.end) {
+        stopAllAudio();
+      }
+    }
+  }, 80);
+
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+}
+
+// Play single word via the words audio — seek to estimated position
+function playWord(wordText, cardEl) {
+  stopAllAudio();
+
+  if (cardEl) {
+    cardEl.classList.add('speaking');
+    currentSpeakingEl = cardEl;
+  }
+
+  const allCards = document.querySelectorAll('.vocab-card');
+  let wordIdx = 0;
+  allCards.forEach((c, i) => {
+    if (c === cardEl) wordIdx = i;
+  });
+
+  const src = getAudioPath('words');
+  audioPlayer.src = src;
+  audioPlayer.addEventListener('loadedmetadata', function onMeta() {
+    audioPlayer.removeEventListener('loadedmetadata', onMeta);
+    const duration = audioPlayer.duration;
+    if (!duration || !isFinite(duration)) return;
+
+    const totalWords = allCards.length || 16;
+    const wordDuration = duration / totalWords;
+    const seekTime = wordIdx * wordDuration;
+    const endTime = (wordIdx + 1) * wordDuration;
+
+    audioPlayer.currentTime = seekTime;
+
+    activeCheckInterval = setInterval(() => {
+      if (audioPlayer.currentTime >= endTime || audioPlayer.paused) {
+        clearInterval(activeCheckInterval);
+        activeCheckInterval = null;
+        stopAllAudio();
+      }
+    }, 80);
+  });
+
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+}
+
+// Play a single vocab word by its text (used by inline vocab tooltips)
+function playVocabWord(wordText) {
+  stopAllAudio();
+
+  // Find the word's index among all vocab cards
+  const allCards = document.querySelectorAll('.vocab-card');
+  let wordIdx = -1;
+  allCards.forEach((c, i) => {
+    const cardWord = c.querySelector('.vocab-card-word');
+    if (cardWord && cardWord.textContent.trim().toLowerCase() === wordText.toLowerCase()) {
+      wordIdx = i;
+      c.classList.add('speaking');
+      currentSpeakingEl = c;
+    }
+  });
+
+  if (wordIdx === -1) return; // word not found
+
+  const src = getAudioPath('words');
+  audioPlayer.src = src;
+  audioPlayer.addEventListener('loadedmetadata', function onMeta() {
+    audioPlayer.removeEventListener('loadedmetadata', onMeta);
+    const duration = audioPlayer.duration;
+    if (!duration || !isFinite(duration)) return;
+
+    const totalWords = allCards.length || 16;
+    const wordDuration = duration / totalWords;
+    const seekTime = wordIdx * wordDuration;
+    const endTime = (wordIdx + 1) * wordDuration;
+
+    audioPlayer.currentTime = seekTime;
+
+    activeCheckInterval = setInterval(() => {
+      if (audioPlayer.currentTime >= endTime || audioPlayer.paused) {
+        clearInterval(activeCheckInterval);
+        activeCheckInterval = null;
+        stopAllAudio();
+      }
+    }, 80);
+  });
+
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+}
+
+// ====== BUILD VOCAB OVERVIEW ======
+function buildVocabOverview() {
+  const grid = document.getElementById('vocabGrid');
+  const allVocab = [];
+  NEWS_DATA.articles.forEach(a => {
+    a.vocabulary.forEach(v => {
+      if (!allVocab.find(x => x.word === v.word)) allVocab.push(v);
+    });
+  });
+  grid.innerHTML = allVocab.map((v, idx) => `
+    <div class="vocab-card" onclick="playWord('${v.word.replace(/'/g, "\\'")}', this)" data-vocab-idx="${idx}">
+      <div>
+        <div class="vocab-card-word">${v.word}</div>
+        <div class="vocab-card-zh">${v.zh}</div>
+      </div>
+      <button class="vocab-card-speak" onclick="event.stopPropagation();playWord('${v.word.replace(/'/g, "\\'")}', this.closest('.vocab-card'))" aria-label="Pronounce ${v.word}">
+        ${speakerSVG}
+      </button>
+    </div>
+  `).join('');
+}
+
+// ====== BUILD ARTICLES ======
+function buildArticles() {
+  const container = document.getElementById('articlesContainer');
+  container.innerHTML = NEWS_DATA.articles.map((article, i) => {
+    // Use pre-split sentences from JSON (matches timing data)
+    const sentences = article.sentences || [article.summary];
+
+    // Build sentence HTML with vocab highlights
+    const sentenceHtml = sentences.map((sentText, si) => {
+      let html = sentText;
+      // Add vocab highlights
+      article.vocabulary.forEach((v) => {
+        const re = new RegExp(`\\b(${v.word})\\b`, 'gi');
+        html = html.replace(re, (match) => {
+          return `<span class="vocab" data-word="${v.word}" onclick="event.stopPropagation();toggleTip(this)">
+            ${match}
+            <span class="vocab-tip">
+              <div class="tip-word">${v.word}</div>
+              <div class="tip-phonetic">${v.phonetic}</div>
+              <div class="tip-pos">${v.pos}</div>
+              <div class="tip-def">${v.definition}</div>
+              <div class="tip-zh">🇨🇳 ${v.zh}</div>
+              ${v.example ? `<div class="tip-example">"${v.example}"</div>` : ''}
+              <button class="tip-speak-btn" onclick="event.stopPropagation();playVocabWord('${v.word.replace(/'/g, "\\'")}')">
+                ${speakerSVG} Listen
+              </button>
+            </span>
+          </span>`;
+        });
+      });
+      return `<span class="sentence" onclick="playSentence('${article.category}', ${si}, this)" data-sentence="${si}">${html}</span>`;
+    }).join(' ');
+
+    return `
+    <article class="article-card" data-cat="${article.category}">
+      <div class="card-cat-strip ${article.category}"></div>
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-tag ${article.category}">${article.categoryLabel}</span>
+          <a class="card-source-link" href="${article.url}" target="_blank" rel="noopener noreferrer">
+            ${article.source} ${linkSVG}
+          </a>
+        </div>
+        <h2 class="card-title">
+          <span class="card-title-speak" onclick="playTitle('${article.category}', this)">${article.title}</span>
+        </h2>
+        <div class="click-hint">
+          ${tapSVG} <span>點擊標題或任意句子，AI 語音朗讀 · Tap any sentence to hear AI voice</span>
+        </div>
+        <div class="card-summary">${sentenceHtml}</div>
+        <div class="card-source-footer">
+          📌 Source: <a href="${article.url}" target="_blank" rel="noopener noreferrer">${article.source} — Read original article</a>
+        </div>
+        <div class="card-actions">
+          <button class="action-btn" onclick="playArticle('${article.category}', this)">
+            ${speakerSVG} Read Aloud (Full Article)
+          </button>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+// ====== TOOLTIP ======
+function toggleTip(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.vocab.active').forEach(v => v.classList.remove('active'));
+  if (!wasActive) {
+    el.classList.add('active');
+    // Auto-play this word's audio when tooltip opens
+    const word = el.dataset.word;
+    if (word) playVocabWord(word);
+  }
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.vocab')) {
+    document.querySelectorAll('.vocab.active').forEach(v => v.classList.remove('active'));
+  }
+});
+
+// ====== CATEGORY FILTER ======
+document.getElementById('catNav').addEventListener('click', (e) => {
+  const btn = e.target.closest('.cat-btn');
+  if (!btn) return;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const cat = btn.dataset.cat;
+  document.querySelectorAll('.article-card').forEach(card => {
+    card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
+  });
+});
+
+// ====== COLLAPSIBLE SECTIONS ======
+function toggleCollapse(bodyId, headerEl) {
+  const body = document.getElementById(bodyId);
+  if (!body) return;
+  body.classList.toggle('collapsed');
+  headerEl.classList.toggle('collapsed');
+}
+
+// ====== BUILD GRAMMAR ======
+function buildGrammar() {
+  const data = NEWS_DATA.learning && NEWS_DATA.learning.grammar;
+  if (!data || data.length === 0) { document.getElementById('grammarSection').style.display = 'none'; return; }
+  const container = document.getElementById('grammarContent');
+  container.innerHTML = data.map(g => {
+    const cat = g.category;
+    return `<div class="learn-card">
+      <span class="learn-card-cat ${cat}">${catLabel(cat)}</span>
+      <div class="grammar-structure">${g.structure}</div>
+      <div class="grammar-pattern">${g.pattern}</div>
+      <div class="grammar-example">${g.example}</div>
+      <div class="grammar-explain">${g.explanation}</div>
+      <div class="grammar-zh">${g.zh_explanation}</div>
+      <div class="grammar-practice"><strong>Practice:</strong> ${g.practice}</div>
+    </div>`;
+  }).join('');
+}
+
+// ====== BUILD READING ======
+function buildReading() {
+  const data = NEWS_DATA.learning && NEWS_DATA.learning.reading;
+  if (!data || data.length === 0) { document.getElementById('readingSection').style.display = 'none'; return; }
+  const container = document.getElementById('readingContent');
+  container.innerHTML = data.map(r => {
+    const cat = r.category;
+    return `<div class="learn-card">
+      <span class="learn-card-cat ${cat}">${catLabel(cat)}</span>
+      ${r.questions.map((q, qi) => {
+        const qId = 'rq_' + cat + '_' + qi;
+        let qBody = '';
+        if (q.type === 'Multiple Choice') {
+          qBody = `<div class="reading-q-text">${q.question}</div>
+            <ul class="reading-options">${q.options.map(o => `<li>${o}</li>`).join('')}</ul>`;
+        } else {
+          qBody = `<div class="reading-q-text">${q.statement}</div>`;
+        }
+        return `<div class="reading-q">
+          <div class="reading-q-type">${q.type}</div>
+          ${qBody}
+          <button class="reveal-btn" onclick="toggleAnswer('${qId}', this)">Show Answer</button>
+          <div class="reading-answer" id="${qId}"><strong>Answer: ${q.answer}</strong><br>${q.explanation}</div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+function toggleAnswer(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const showing = el.classList.toggle('show');
+  btn.textContent = showing ? 'Hide Answer' : 'Show Answer';
+}
+
+// ====== BUILD WRITING ======
+function buildWriting() {
+  const data = NEWS_DATA.learning && NEWS_DATA.learning.writing;
+  if (!data || data.length === 0) { document.getElementById('writingSection').style.display = 'none'; return; }
+  const container = document.getElementById('writingContent');
+  container.innerHTML = data.map(w => {
+    const cat = w.category;
+    return `<div class="learn-card">
+      <span class="learn-card-cat ${cat}">${catLabel(cat)}</span>
+      <div class="writing-phrases">
+        ${w.useful_phrases.map(p => `
+          <div class="writing-phrase">
+            <span class="writing-phrase-en">${p.phrase}</span>
+            <span class="writing-phrase-zh">${p.zh}</span>
+          </div>
+          <div class="writing-context">${p.context}</div>
+        `).join('')}
+      </div>
+      <div class="collocations">
+        ${w.collocations.map(c => `<span class="collocation-tag" title="${c.example.replace(/"/g, '&quot;')}">${c.collocation}</span>`).join('')}
+      </div>
+      <div class="writing-model">
+        <div class="writing-model-en">${w.model_sentence}</div>
+        <div class="writing-model-zh">${w.model_sentence_zh}</div>
+      </div>
+      <div class="writing-tip">${w.writing_tip}</div>
+    </div>`;
+  }).join('');
+}
+
+// ====== BUILD LISTENING ======
+function buildListening() {
+  const data = NEWS_DATA.learning && NEWS_DATA.learning.listening;
+  if (!data || data.length === 0) { document.getElementById('listeningSection').style.display = 'none'; return; }
+  const container = document.getElementById('listeningContent');
+  container.innerHTML = data.map(l => {
+    const cat = l.category;
+    return `<div class="learn-card">
+      <span class="learn-card-cat ${cat}">${catLabel(cat)}</span>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">${l.zh_instructions}</p>
+      ${l.sentences.map((s, si) => {
+        const gapId = 'lg_' + cat + '_' + si;
+        // Build gapped text with input fields
+        let gapHtml = s.gapped;
+        let ansIdx = 0;
+        // Replace each ___ (or ___-___) with an input
+        gapHtml = gapHtml.replace(/___(?:-___)?/g, () => {
+          const answer = s.answers[ansIdx] || '';
+          const fieldId = gapId + '_' + ansIdx;
+          ansIdx++;
+          return '<input type="text" class="gap" id="' + fieldId + '" data-answer="' + answer + '" autocomplete="off" spellcheck="false">';
+        });
+        return `<div class="listening-sentence">
+          <div class="listening-gapped">${gapHtml}</div>
+          <div class="listening-controls">
+            <button class="listen-btn" onclick="playListeningSentence('${cat}', ${s.sentence_index})">
+              ${speakerSVG} Listen
+            </button>
+            <button class="check-btn" onclick="checkListeningGaps('${gapId}', ${s.answers.length})">Check</button>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+function playListeningSentence(cat, sentIdx) {
+  stopAllAudio();
+  const timing = getTiming(cat, 'sentence', sentIdx);
+  if (!timing) {
+    // Fallback: play full article
+    const src = getAudioPath('article', cat);
+    audioPlayer.src = src;
+    audioPlayer.play().catch(err => console.log('Audio play error:', err));
+    audioPlayer.onended = () => { stopAllAudio(); };
+    return;
+  }
+  const src = getAudioPath('article', cat);
+  audioPlayer.src = src;
+  audioPlayer.addEventListener('loadedmetadata', function onMeta() {
+    audioPlayer.removeEventListener('loadedmetadata', onMeta);
+    audioPlayer.currentTime = timing.start;
+  });
+  activeCheckInterval = setInterval(() => {
+    if (audioPlayer.currentTime >= timing.end || audioPlayer.paused) {
+      clearInterval(activeCheckInterval);
+      activeCheckInterval = null;
+      if (audioPlayer.currentTime >= timing.end) stopAllAudio();
+    }
+  }, 80);
+  audioPlayer.play().catch(err => console.log('Audio play error:', err));
+}
+
+function checkListeningGaps(gapIdPrefix, count) {
+  for (let i = 0; i < count; i++) {
+    const input = document.getElementById(gapIdPrefix + '_' + i);
+    if (!input) continue;
+    const answer = input.dataset.answer.toLowerCase().trim();
+    const userVal = input.value.toLowerCase().trim();
+    input.classList.remove('correct', 'wrong');
+    input.classList.add('filled');
+    if (userVal === answer) {
+      input.classList.add('correct');
+    } else {
+      input.classList.add('wrong');
+      // Show correct answer after a brief moment
+      setTimeout(() => { input.value = input.dataset.answer; input.classList.remove('wrong'); input.classList.add('correct'); }, 1500);
+    }
+  }
+}
+
+function catLabel(cat) {
+  const labels = { tech: 'Technology', finance: 'Finance', stem: 'STEM', world: 'International' };
+  return labels[cat] || cat;
+}
+
+// ====== INIT ======
+// buildVocabOverview(); // Pre-rendered
+// buildArticles(); // Pre-rendered
+// buildGrammar(); // Pre-rendered
+// buildReading(); // Pre-rendered
+// buildWriting(); // Pre-rendered
+// buildListening(); // Pre-rendered
+</script>
+</body>
+</html>
