@@ -212,9 +212,15 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
 .reading-options li label { cursor: pointer; display: flex; align-items: baseline; gap: 6px; }
 .reading-options li label:hover { color: var(--text-primary); }
 .reading-options li input[type="radio"] { margin: 0; flex-shrink: 0; }
-.answer-reveal summary { font-size: 0.75rem; color: var(--accent-tech); cursor: pointer; font-weight: 500; margin-top: 4px; }
-.answer-reveal summary:hover { text-decoration: underline; }
-.answer-reveal .answer-text { padding: 8px 12px; background: var(--accent-tech-bg); border-radius: 8px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin-top: 6px; }
+.answer-reveal { display: none; padding: 8px 12px; background: var(--accent-tech-bg); border-radius: 8px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; margin-top: 8px; }
+.answer-reveal.visible { display: block; animation: fadeInUp 0.3s ease; }
+.answer-reveal .answer-text { margin-bottom: 4px; }
+.answer-reveal .answer-explain { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+.check-answer-btn { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; padding: 5px 14px; border-radius: 6px; border: 1px solid var(--accent-tech); background: transparent; color: var(--accent-tech); font-size: 0.75rem; font-weight: 600; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
+.check-answer-btn:hover { background: var(--accent-tech); color: #fff; }
+.check-answer-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.reading-q.answered .reading-options li label { pointer-events: none; opacity: 0.7; }
+.reading-q.answered .check-answer-btn { display: none; }
 
 /* Listening */
 .listening-sentence { margin-bottom: 14px; padding: 12px 14px; background: var(--bg-hover); border-radius: 8px; border: 1px solid var(--border); }
@@ -508,26 +514,29 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">The &#x27;Macrohard&#x27; project is a collaboration between Tesla and OpenAI.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_tech_0" value="True"> True</label></li><li><label><input type="radio" name="rq_tech_0" value="False"> False</label></li><li><label><input type="radio" name="rq_tech_0" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ False<br>The article states it is a joint project between Tesla and xAI (not OpenAI). xAI is Musk&#x27;s own artificial intelligence startup.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'tech', 0)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ False</div>
+                  <div class="answer-explain">The article states it is a joint project between Tesla and xAI (not OpenAI). xAI is Musk&#x27;s own artificial intelligence startup.</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">Meta&#x27;s new MTIA chips will be manufactured entirely in the United States.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_tech_1" value="True"> True</label></li><li><label><input type="radio" name="rq_tech_1" value="False"> False</label></li><li><label><input type="radio" name="rq_tech_1" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ Not Given<br>The article mentions Meta is rolling out its MTIA series chips but provides no information about where they are manufactured.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'tech', 1)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ Not Given</div>
+                  <div class="answer-explain">The article mentions Meta is rolling out its MTIA series chips but provides no information about where they are manufactured.</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">Multiple Choice</div>
                 <div class="reading-q-text">What does the term &#x27;vertically integrate&#x27; in the context of this article mean?</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_tech_2" value="A"> A. Combining different companies into one corporation</label></li><li><label><input type="radio" name="rq_tech_2" value="B"> B. Controlling multiple stages of production from hardware to software</label></li><li><label><input type="radio" name="rq_tech_2" value="C"> C. Expanding a company&#x27;s workforce across different levels</label></li><li><label><input type="radio" name="rq_tech_2" value="D"> D. Building taller data centers to save space</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ B<br>In context, &#x27;vertically integrate AI across hardware, software, and cloud infrastructure&#x27; means controlling multiple stages of the AI production chain.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'tech', 2)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ B</div>
+                  <div class="answer-explain">In context, &#x27;vertically integrate AI across hardware, software, and cloud infrastructure&#x27; means controlling multiple stages of the AI production chain.</div>
+                </div>
               </div>
           </div>
         </div>
@@ -536,26 +545,17 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
           <div id="listeningContent_tech">
             <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">聆聽文章錄音，用所聽到的詞語填寫空白處。</p>
             <div class="listening-sentence">
-              <div class="listening-gapped">Elon Musk on Wednesday <input type="text" class="gap-input" id="lg_tech_0_0" data-answer="unveiled" autocomplete="off" spellcheck="false"> a joint project between Tesla and his artificial intelligence <input type="text" class="gap-input" id="lg_tech_0_1" data-answer="startup" autocomplete="off" spellcheck="false"> xAI, which he called &#x27;Macrohard&#x27; or &#x27;Digital Optimus.&#x27;</div>
+              <div class="listening-gapped">Elon Musk on Wednesday <input type="text" class="gap-input" id="lg_tech_0_0" data-answer="unveiled" autocomplete="off" spellcheck="false" placeholder="..." size="10"> a joint project between Tesla and his artificial intelligence <input type="text" class="gap-input" id="lg_tech_0_1" data-answer="startup" autocomplete="off" spellcheck="false" placeholder="..." size="9"> xAI, which he called &#x27;Macrohard&#x27; or &#x27;Digital Optimus.&#x27;</div>
               <div class="listening-controls">
                 <button class="listen-btn" onclick="playListeningSentence('tech', 0)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> 播放 Listen
                 </button>
               </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">The system is described as <input type="text" class="gap-input" id="lg_tech_1_0" data-answer="capable" autocomplete="off" spellcheck="false"> of emulating the functions of software companies, <input type="text" class="gap-input" id="lg_tech_1_1" data-answer="signaling" autocomplete="off" spellcheck="false"> Musk&#x27;s ambition to expand beyond hardware and AI models into <input type="text" class="gap-input" id="lg_tech_1_2" data-answer="enterprise" autocomplete="off" spellcheck="false"> software.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('tech', 1)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">The tech <input type="text" class="gap-input" id="lg_tech_2_0" data-answer="landscape" autocomplete="off" spellcheck="false"> is rapidly shifting as major players race to <input type="text" class="gap-input" id="lg_tech_2_1" data-answer="vertically" autocomplete="off" spellcheck="false"> integrate AI across hardware, software, and cloud <input type="text" class="gap-input" id="lg_tech_2_2" data-answer="infrastructure" autocomplete="off" spellcheck="false">.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('tech', 3)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkListeningAnswer(this, 'tech')">✅ 確認答案 Check</button>
+            <div class="answer-reveal">
+              <div class="answer-text">✅ unveiled, startup</div>
+              <div class="answer-explain">Elon Musk on Wednesday unveiled a joint project between Tesla and his artificial intelligence startup xAI, which he called &#x27;Macrohard&#x27; or &#x27;Digital Optimus.&#x27;</div>
             </div>
           </div>
         </div>
@@ -589,26 +589,29 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">The IEA&#x27;s oil release was the largest in the organization&#x27;s history.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_finance_0" value="True"> True</label></li><li><label><input type="radio" name="rq_finance_0" value="False"> False</label></li><li><label><input type="radio" name="rq_finance_0" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ True<br>The article explicitly states it was &#x27;the largest emergency intervention in the agency&#x27;s history.&#x27;</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'finance', 0)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ True</div>
+                  <div class="answer-explain">The article explicitly states it was &#x27;the largest emergency intervention in the agency&#x27;s history.&#x27;</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">West Texas Intermediate crude oil prices exceeded $99 per barrel.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_finance_1" value="True"> True</label></li><li><label><input type="radio" name="rq_finance_1" value="False"> False</label></li><li><label><input type="radio" name="rq_finance_1" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ False<br>The article states WTI was &#x27;trading above $88&#x27; while Brent crude was &#x27;approaching $99.&#x27; WTI did not reach $99.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'finance', 1)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ False</div>
+                  <div class="answer-explain">The article states WTI was &#x27;trading above $88&#x27; while Brent crude was &#x27;approaching $99.&#x27; WTI did not reach $99.</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">Multiple Choice</div>
                 <div class="reading-q-text">Which combination of factors pushed the Dow to its lowest level since December?</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_finance_2" value="A"> A. Rising interest rates and tech earnings</label></li><li><label><input type="radio" name="rq_finance_2" value="B"> B. Rising energy costs, geopolitical uncertainty, and a stronger dollar</label></li><li><label><input type="radio" name="rq_finance_2" value="C"> C. Federal Reserve rate cuts and bond market volatility</label></li><li><label><input type="radio" name="rq_finance_2" value="D"> D. Chinese tariffs and supply chain disruptions</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ B<br>The article explicitly lists &#x27;rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar&#x27; as the factors.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'finance', 2)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ B</div>
+                  <div class="answer-explain">The article explicitly lists &#x27;rising energy costs, geopolitical uncertainty, and a strengthening U.S. dollar&#x27; as the factors.</div>
+                </div>
               </div>
           </div>
         </div>
@@ -617,26 +620,17 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
           <div id="listeningContent_finance">
             <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">聆聽文章錄音，用所聽到的詞語填寫空白處。</p>
             <div class="listening-sentence">
-              <div class="listening-gapped">The International Energy Agency announced an <input type="text" class="gap-input" id="lg_finance_0_0" data-answer="unprecedented" autocomplete="off" spellcheck="false"> release of 400 million barrels of oil from <input type="text" class="gap-input" id="lg_finance_0_1" data-answer="strategic" autocomplete="off" spellcheck="false"> reserves, the largest emergency <input type="text" class="gap-input" id="lg_finance_0_2" data-answer="intervention" autocomplete="off" spellcheck="false"> in the agency&#x27;s history.</div>
+              <div class="listening-gapped">The International Energy Agency announced an <input type="text" class="gap-input" id="lg_finance_0_0" data-answer="unprecedented" autocomplete="off" spellcheck="false" placeholder="..." size="15"> release of 400 million barrels of oil from <input type="text" class="gap-input" id="lg_finance_0_1" data-answer="strategic" autocomplete="off" spellcheck="false" placeholder="..." size="11"> reserves, the largest emergency <input type="text" class="gap-input" id="lg_finance_0_2" data-answer="intervention" autocomplete="off" spellcheck="false" placeholder="..." size="14"> in the agency&#x27;s history.</div>
               <div class="listening-controls">
                 <button class="listen-btn" onclick="playListeningSentence('finance', 0)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> 播放 Listen
                 </button>
               </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">Despite this <input type="text" class="gap-input" id="lg_finance_1_0" data-answer="massive" autocomplete="off" spellcheck="false"> action, oil prices continued to <input type="text" class="gap-input" id="lg_finance_1_1" data-answer="climb" autocomplete="off" spellcheck="false"> on Wednesday, with Brent crude <input type="text" class="gap-input" id="lg_finance_1_2" data-answer="approaching" autocomplete="off" spellcheck="false"> $99 per barrel and West Texas Intermediate trading above $88.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('finance', 1)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">The <input type="text" class="gap-input" id="lg_finance_2_0" data-answer="combination" autocomplete="off" spellcheck="false"> of rising energy costs, <input type="text" class="gap-input" id="lg_finance_2_1" data-answer="geopolitical" autocomplete="off" spellcheck="false"> uncertainty, and a <input type="text" class="gap-input" id="lg_finance_2_2" data-answer="strengthening" autocomplete="off" spellcheck="false"> U.S. dollar pushed the Dow Jones Industrial Average to its lowest level since December.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('finance', 3)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkListeningAnswer(this, 'finance')">✅ 確認答案 Check</button>
+            <div class="answer-reveal">
+              <div class="answer-text">✅ unprecedented, strategic, intervention</div>
+              <div class="answer-explain">The International Energy Agency announced an unprecedented release of 400 million barrels of oil from strategic reserves, the largest emergency intervention in the agency&#x27;s history.</div>
             </div>
           </div>
         </div>
@@ -670,26 +664,29 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">The frozen brain study was conducted on human subjects.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_stem_0" value="True"> True</label></li><li><label><input type="radio" name="rq_stem_0" value="False"> False</label></li><li><label><input type="radio" name="rq_stem_0" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ False<br>The article clearly states the research involved &#x27;mouse brains,&#x27; not human subjects.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'stem', 0)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ False</div>
+                  <div class="answer-explain">The article clearly states the research involved &#x27;mouse brains,&#x27; not human subjects.</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">The cryopreservation technique could eventually be used for human hibernation during space travel.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_stem_1" value="True"> True</label></li><li><label><input type="radio" name="rq_stem_1" value="False"> False</label></li><li><label><input type="radio" name="rq_stem_1" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ Not Given<br>While the article mentions &#x27;long-duration space travel&#x27; as a potential implication, it does not specifically state the technique could be used for human hibernation. It notes &#x27;cryosleep remains in the realm of science fiction.&#x27;</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'stem', 1)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ Not Given</div>
+                  <div class="answer-explain">While the article mentions &#x27;long-duration space travel&#x27; as a potential implication, it does not specifically state the technique could be used for human hibernation. It notes &#x27;cryosleep remains in the realm of science fiction.&#x27;</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">Multiple Choice</div>
                 <div class="reading-q-text">What was essential to restoring brain function after thawing?</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_stem_2" value="A"> A. Electrical stimulation of neurons</label></li><li><label><input type="radio" name="rq_stem_2" value="B"> B. Gradual warming over several days</label></li><li><label><input type="radio" name="rq_stem_2" value="C"> C. Targeted chemical treatments combined with cryopreservation protocols</label></li><li><label><input type="radio" name="rq_stem_2" value="D"> D. Gene therapy applied to frozen tissue</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ C<br>The article states &#x27;careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.&#x27;</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'stem', 2)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ C</div>
+                  <div class="answer-explain">The article states &#x27;careful cryopreservation protocols combined with targeted chemical treatments to restore synaptic signaling after thawing.&#x27;</div>
+                </div>
               </div>
           </div>
         </div>
@@ -698,26 +695,17 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
           <div id="listeningContent_stem">
             <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">聆聽文章錄音，用所聽到的詞語填寫空白處。</p>
             <div class="listening-sentence">
-              <div class="listening-gapped">Researchers have achieved a <input type="text" class="gap-input" id="lg_stem_0_0" data-answer="groundbreaking" autocomplete="off" spellcheck="false"> milestone by successfully <input type="text" class="gap-input" id="lg_stem_0_1" data-answer="reviving" autocomplete="off" spellcheck="false"> neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.</div>
+              <div class="listening-gapped">Researchers have achieved a <input type="text" class="gap-input" id="lg_stem_0_0" data-answer="groundbreaking" autocomplete="off" spellcheck="false" placeholder="..." size="16"> milestone by successfully <input type="text" class="gap-input" id="lg_stem_0_1" data-answer="reviving" autocomplete="off" spellcheck="false" placeholder="..." size="10"> neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.</div>
               <div class="listening-controls">
                 <button class="listen-btn" onclick="playListeningSentence('stem', 0)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> 播放 Listen
                 </button>
               </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">The technique involved careful <input type="text" class="gap-input" id="lg_stem_1_0" data-answer="cryopreservation" autocomplete="off" spellcheck="false"> protocols combined with targeted chemical treatments to restore <input type="text" class="gap-input" id="lg_stem_1_1" data-answer="synaptic" autocomplete="off" spellcheck="false"> signaling after thawing.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('stem', 1)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">The findings could have far-reaching <input type="text" class="gap-input" id="lg_stem_2_0" data-answer="implications" autocomplete="off" spellcheck="false"> for organ <input type="text" class="gap-input" id="lg_stem_2_1" data-answer="preservation" autocomplete="off" spellcheck="false">, long-duration space travel, and <input type="text" class="gap-input" id="lg_stem_2_2" data-answer="neuroscience" autocomplete="off" spellcheck="false"> research.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('stem', 3)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkListeningAnswer(this, 'stem')">✅ 確認答案 Check</button>
+            <div class="answer-reveal">
+              <div class="answer-text">✅ groundbreaking, reviving</div>
+              <div class="answer-explain">Researchers have achieved a groundbreaking milestone by successfully reviving neural activity in mouse brains that had been deeply frozen, according to a study published in Nature.</div>
             </div>
           </div>
         </div>
@@ -751,26 +739,29 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">Iran successfully blocked oil exports through the Strait of Hormuz.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_world_0" value="True"> True</label></li><li><label><input type="radio" name="rq_world_0" value="False"> False</label></li><li><label><input type="radio" name="rq_world_0" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ False<br>The article states Iran&#x27;s Revolutionary Guards &#x27;warned they would block all oil exports&#x27; — this is a threat, not an action that has been carried out.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'world', 0)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ False</div>
+                  <div class="answer-explain">The article states Iran&#x27;s Revolutionary Guards &#x27;warned they would block all oil exports&#x27; — this is a threat, not an action that has been carried out.</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">True/False/Not Given</div>
                 <div class="reading-q-text">The drones near Dubai airport were launched by Iran&#x27;s Revolutionary Guards.</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_world_1" value="True"> True</label></li><li><label><input type="radio" name="rq_world_1" value="False"> False</label></li><li><label><input type="radio" name="rq_world_1" value="Not Given"> Not Given</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ Not Given<br>The article mentions drones were intercepted near Dubai airport but does not specify who launched them.</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'world', 1)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ Not Given</div>
+                  <div class="answer-explain">The article mentions drones were intercepted near Dubai airport but does not specify who launched them.</div>
+                </div>
               </div><div class="reading-q">
                 <div class="reading-q-type">Multiple Choice</div>
                 <div class="reading-q-text">What was the market&#x27;s reaction to the IEA&#x27;s record oil release?</div>
                 <ul class="reading-options"><li><label><input type="radio" name="rq_world_2" value="A"> A. Oil prices dropped sharply below $80</label></li><li><label><input type="radio" name="rq_world_2" value="B"> B. Markets stabilized and the Dow recovered</label></li><li><label><input type="radio" name="rq_world_2" value="C"> C. Brent crude continued to climb toward $99 per barrel</label></li><li><label><input type="radio" name="rq_world_2" value="D"> D. Investors shifted money from oil stocks to tech stocks</label></li></ul>
-                <details class="answer-reveal">
-                  <summary>Show Answer</summary>
-                  <div class="answer-text">✅ C<br>The article states the release &#x27;failed to calm markets, as Brent crude continued to climb toward $99 per barrel.&#x27;</div>
-                </details>
+                <button class="check-answer-btn" onclick="checkReadingAnswer(this, 'world', 2)">✅ 確認答案 Check</button>
+                <div class="answer-reveal">
+                  <div class="answer-text">✅ C</div>
+                  <div class="answer-explain">The article states the release &#x27;failed to calm markets, as Brent crude continued to climb toward $99 per barrel.&#x27;</div>
+                </div>
               </div>
           </div>
         </div>
@@ -779,26 +770,17 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--text-p
           <div id="listeningContent_world">
             <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">聆聽文章錄音，用所聯到的詞語填寫空白處。</p>
             <div class="listening-sentence">
-              <div class="listening-gapped">Three commercial <input type="text" class="gap-input" id="lg_world_0_0" data-answer="vessels" autocomplete="off" spellcheck="false"> were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict <input type="text" class="gap-input" id="lg_world_0_1" data-answer="intensified" autocomplete="off" spellcheck="false">, with <input type="text" class="gap-input" id="lg_world_0_2" data-answer="projectiles" autocomplete="off" spellcheck="false"> hitting a container ship and drones intercepted near Dubai airport injuring four people.</div>
+              <div class="listening-gapped">Three commercial <input type="text" class="gap-input" id="lg_world_0_0" data-answer="vessels" autocomplete="off" spellcheck="false" placeholder="..." size="9"> were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict <input type="text" class="gap-input" id="lg_world_0_1" data-answer="intensified" autocomplete="off" spellcheck="false" placeholder="..." size="13">, with <input type="text" class="gap-input" id="lg_world_0_2" data-answer="projectiles" autocomplete="off" spellcheck="false" placeholder="..." size="13"> hitting a container ship and drones intercepted near Dubai airport injuring four people.</div>
               <div class="listening-controls">
                 <button class="listen-btn" onclick="playListeningSentence('world', 0)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> 播放 Listen
                 </button>
               </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">The Pentagon <input type="text" class="gap-input" id="lg_world_1_0" data-answer="confirmed" autocomplete="off" spellcheck="false"> that over 150 American service members have been <input type="text" class="gap-input" id="lg_world_1_1" data-answer="wounded" autocomplete="off" spellcheck="false"> since the war began, while Iran&#x27;s Revolutionary Guards warned they would block all oil exports from the region if strikes continued.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('world', 1)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
-            </div><div class="listening-sentence">
-              <div class="listening-gapped">European <input type="text" class="gap-input" id="lg_world_2_0" data-answer="allies" autocomplete="off" spellcheck="false"> including France, Greece, and the UK have increased military support, while China urged both sides to exercise <input type="text" class="gap-input" id="lg_world_2_1" data-answer="restraint" autocomplete="off" spellcheck="false">.</div>
-              <div class="listening-controls">
-                <button class="listen-btn" onclick="playListeningSentence('world', 3)">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg> Listen
-                </button>
-              </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkListeningAnswer(this, 'world')">✅ 確認答案 Check</button>
+            <div class="answer-reveal">
+              <div class="answer-text">✅ vessels, intensified, projectiles</div>
+              <div class="answer-explain">Three commercial vessels were attacked near the Strait of Hormuz on Wednesday as the US-Iran conflict intensified, with projectiles hitting a container ship and drones intercepted near Dubai airport injuring four people.</div>
             </div>
           </div>
         </div>
@@ -1438,10 +1420,48 @@ function navigateDate(val) {
   window.location.href = val;
 }
 
+// ====== CHECK INDIVIDUAL ANSWERS ======
+function checkReadingAnswer(btn, cat, qIdx) {
+  const q = btn.closest('.reading-q');
+  if (!q || q.classList.contains('answered')) return;
+  const selected = q.querySelector('input[type="radio"]:checked');
+  if (!selected) { alert('請先選擇答案 Please select an answer first'); return; }
+  
+  q.classList.add('answered');
+  const reveal = q.querySelector('.answer-reveal');
+  if (reveal) reveal.classList.add('visible');
+  btn.style.display = 'none';
+}
+
+function checkListeningAnswer(btn, cat) {
+  const container = btn.closest('.article-exercises');
+  if (!container) return;
+  container.querySelectorAll('.gap-input').forEach(input => {
+    const correct = (input.dataset.answer || '').toLowerCase().trim();
+    const val = input.value.toLowerCase().trim();
+    if (val === correct) {
+      input.classList.add('correct');
+      input.classList.remove('wrong');
+    } else {
+      input.classList.add('wrong');
+      input.classList.remove('correct');
+    }
+    input.readOnly = true;
+  });
+  const reveal = container.querySelector('.answer-reveal');
+  if (reveal) reveal.classList.add('visible');
+  btn.style.display = 'none';
+}
+
 // ====== PER-ARTICLE SCORING ======
 let _pendingCat = null;
+const _submittedCats = {};
 
 function checkAndSubmitArticle(cat) {
+  if (_submittedCats[cat]) {
+    alert('此文章已提交成績 This article score has already been submitted.');
+    return;
+  }
   // Count reading correct for this category
   let readingCorrect = 0, readingTotal = 0;
   document.querySelectorAll(`#readingContent_${cat} .reading-q`).forEach(q => {
@@ -1449,11 +1469,9 @@ function checkAndSubmitArticle(cat) {
     const selected = q.querySelector('input[type="radio"]:checked');
     const answerEl = q.querySelector('.answer-text');
     if (selected && answerEl) {
-      // Extract the correct answer (after ✅, before any <br> explanation)
       const rawAnswer = answerEl.textContent.replace(/^\s*\u2705\s*/, '').trim();
       const correctAnswer = rawAnswer.split('\n')[0].trim();
       const selectedVal = selected.value.trim();
-      // Check: MC uses first letter (A/B/C/D), T/F/NG uses full text
       if (correctAnswer === selectedVal || correctAnswer.startsWith(selectedVal)) readingCorrect++;
     }
   });
@@ -1465,11 +1483,9 @@ function checkAndSubmitArticle(cat) {
     if (input.value.toLowerCase().trim() === (input.dataset.answer || '').toLowerCase().trim()) listeningCorrect++;
   });
 
-  // Update display
   document.getElementById(`readingScore_${cat}`).textContent = `${readingCorrect}/${readingTotal}`;
   document.getElementById(`listeningScore_${cat}`).textContent = `${listeningCorrect}/${listeningTotal}`;
 
-  // Submit
   const name = getUserName();
   if (!name) { _pendingCat = cat; promptName(); return; }
   doSubmitArticleScore(cat, name, readingCorrect, readingTotal, listeningCorrect, listeningTotal);
@@ -1497,21 +1513,32 @@ function doSubmitArticleScore(cat, name, readingCorrect, readingTotal, listening
 
   const panel = document.getElementById(`articleScore_${cat}`);
   const btn = panel.querySelector('.score-submit-btn');
-  const origText = btn.textContent;
   btn.textContent = '提交中 Submitting...';
   btn.disabled = true;
 
   if (!SHEET_CONFIGURED) {
+    // Check local duplicate
     let localScores = JSON.parse(safeGet('news_scores') || '[]');
+    const dup = localScores.find(s => s.name === name && s.date === today && s.category === cat);
+    if (dup) {
+      btn.textContent = '⚠️ 已提交過 Already submitted';
+      _submittedCats[cat] = true;
+      markArticleSubmitted(cat);
+      setTimeout(() => { btn.disabled = true; }, 100);
+      loadLeaderboard();
+      return;
+    }
     localScores.push({ ...payload, ts: new Date().toISOString() });
     safeSet('news_scores', JSON.stringify(localScores));
     btn.textContent = '✅ 已儲存 Saved';
+    _submittedCats[cat] = true;
     markArticleSubmitted(cat);
-    setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000);
+    btn.disabled = true;
     loadLeaderboard();
     return;
   }
 
+  // Submit via Google Sheets (no-cors POST, then immediately refresh leaderboard)
   fetch(SHEET_WEBAPP_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -1519,17 +1546,21 @@ function doSubmitArticleScore(cat, name, readingCorrect, readingTotal, listening
     body: JSON.stringify(payload)
   }).then(() => {
     btn.textContent = '✅ 已提交 Submitted!';
+    _submittedCats[cat] = true;
     markArticleSubmitted(cat);
-    setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000);
-    setTimeout(loadLeaderboard, 1500);
+    btn.disabled = true;
+    // Wait a moment for Google Sheets to process, then refresh leaderboard
+    setTimeout(loadLeaderboard, 2000);
   }).catch(err => {
     console.error('Submit error:', err);
+    // Fallback to local storage
     let localScores = JSON.parse(safeGet('news_scores') || '[]');
     localScores.push({ ...payload, ts: new Date().toISOString() });
     safeSet('news_scores', JSON.stringify(localScores));
     btn.textContent = '✅ 已儲存 Saved Locally';
+    _submittedCats[cat] = true;
     markArticleSubmitted(cat);
-    setTimeout(() => { btn.textContent = origText; btn.disabled = false; }, 2000);
+    btn.disabled = true;
     loadLeaderboard();
   });
 }
