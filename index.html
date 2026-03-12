@@ -1703,7 +1703,8 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ====== GOOGLE SHEETS INTEGRATION ======
-const SHEET_WEBAPP_URL = '__SHEET_WEBAPP_URL__';
+const SHEET_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyx77xBF1gRrVJSkmCjyVuZh7NgG7ctCwT3gZSbDhL8o4UwuNy2STK2uBB9FMoox6MB1A/exec';
+const SHEET_CONFIGURED = SHEET_WEBAPP_URL.indexOf('script.google.com') !== -1;
 
 function submitScore() {
   if (!lastScores) { calculateScores(); }
@@ -1734,7 +1735,7 @@ function doSubmitScore(name) {
     totalPct: lastScores.totalPct
   };
 
-  if (SHEET_WEBAPP_URL === '__SHEET_WEBAPP_URL__') {
+  if (!SHEET_CONFIGURED) {
     // No Sheet URL configured yet — store locally
     let localScores = JSON.parse(safeGet('news_scores') || '[]');
     localScores.push({ ...payload, ts: new Date().toISOString() });
@@ -1772,7 +1773,7 @@ function loadLeaderboard() {
   const empty = document.getElementById('lbEmpty');
   const body = document.getElementById('lbBody');
 
-  if (SHEET_WEBAPP_URL === '__SHEET_WEBAPP_URL__') {
+  if (!SHEET_CONFIGURED) {
     // Load from local store
     const localScores = JSON.parse(safeGet('news_scores') || '[]');
     loading.style.display = 'none';
